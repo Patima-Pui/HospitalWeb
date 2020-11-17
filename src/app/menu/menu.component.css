@@ -1,0 +1,62 @@
+* {
+	margin: 0px; 
+	padding: 0px;
+}
+
+/*Title*/
+.header {
+        height: 90px;
+        background-color: rgb(46, 24, 75);
+        color: lightcyan;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+}
+
+.textlogo{
+    display: block;
+    text-align: left;
+    color: white;
+    margin-left: 10px;
+    padding-top: 15px;
+}
+
+/*Side Nav*/
+.container {
+    height: calc(100vh - 100px);
+}
+
+mat-drawer{
+    width: 200px;
+    background-color:lightgray;
+    border: 1px solid lightgray;
+}
+
+.nav-left-sidebar {
+	justify-content: left;
+    list-style: none; /*delete bullet*/
+}
+
+.nav-link {
+    text-decoration: none;/*delete underline*/
+    color: black;
+    height: 28px;
+    cursor: pointer;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+/*will show lightgray when cersor point to the nav-link */
+.nav-link:hover{ 
+    color: white;
+    background: grey;
+}
+
+/*will show gray background when click the nav-link */
+.nav-link:focus{ 
+    color: white;
+    background: grey;
+    border: none;
+}

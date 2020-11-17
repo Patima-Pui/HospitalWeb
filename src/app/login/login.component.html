@@ -1,0 +1,31 @@
+<div class="limiter">
+    <div class="container-fluid">
+        <div class="wrap-smallbox">
+            <div class="wrap-header">
+                <img src="../assets/Image/LogoImg.png" alt="logo" width="80" height="80">
+                <div class="textlogo">
+                    <h1>Mahidol University</h1>
+                    <h2>Siriraj Hospital</h2>
+                </div> <!--End class textlogo-->
+            </div>
+
+            <div class="wrap-form">
+                <form><!--Go to "login_db.php" after click "submit"-->
+                    <p>กรอกข้อมูลเพื่อเข้าสู่ระบบ</p>
+                    <div class="input-login">
+                        <label>Username</label>
+                        <input type="text" name="username" [(ngModel)]="isUsername"> <!-- placeholder="Enter Username"  -->
+
+                        <label>Password</label>
+                        <input type="password" name="password"  [(ngModel)]="isPassword">
+                    </div>
+
+                    <div class="submit-btn">
+                        <button type="submit" (click)="clickLogin()" name="login_submit" class="btn-submit">เข้าสู่ระบบ</button>
+                        <button type="submit" name="login_cancel" class="btn-cancel">ยกเลิก</button>
+                    </div>
+                </form>
+            </div><!--End wrap-form -->           
+        </div><!--End wrap-login-->        
+    </div><!--container-fluid-->   
+</div><!--End limiter-->   

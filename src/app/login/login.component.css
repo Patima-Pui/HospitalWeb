@@ -1,0 +1,132 @@
+* {
+	margin: 0px; /*นับจากข้างนอก (top, right, bottom, and left)*/
+	padding: 0px; /*นับจากข้างใน (top, right, bottom, and left)*/
+    box-sizing: border-box;
+    /*border: 1px solid #c4b0de;*/
+}
+
+body, html {
+    height: 100%;
+    font-size: 16px;
+}
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-fluid {
+    width: 100%;  
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #cee4eb;
+}
+
+/*Set login box*/
+.wrap-smallbox {
+    width: 400px;
+    padding: 15px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.wrap-smallbox .wrap-header {
+    /* Set all element in header box at center*/
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px ;
+    background: rgb(46, 24, 75);
+    padding: 5px;
+}
+
+.wrap-smallbox .wrap-header img {
+    display: block;
+}
+
+.wrap-smallbox .wrap-header .textlogo{
+    text-align: left;
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.wrap-smallbox .wrap-form {
+    margin: 0px auto ;
+    padding: 10px 30px;
+}
+
+/*.wrap-smallbox .wrap-form  h7{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}*/
+
+.wrap-smallbox .wrap-form  p{
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+/*.wrap-smallbox .wrap-form  a{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}*/
+
+.input-login label {
+    display: block;
+    width: 100%;
+
+    padding: 5px 10px;
+    margin: 0px ;
+    
+    text-align: left;
+    font-weight: bold;
+}
+
+.input-login input {
+    display: block;
+    width: 100%;
+
+    padding: 5px 10px;
+    margin: 0px ;
+
+    border-radius: 25px;
+    border: 1px solid gray;
+}
+
+.submit-btn {
+    margin: 10px 0px ; /*Set margin top and bottom 10px and set margin left and right 0px*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-btn button {
+    width: 50%;   
+    margin: 10px ;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+}
+
+.submit-btn .btn-submit {
+    flex: 1;
+    background:rgb(50, 235, 203);
+}
+
+.submit-btn .btn-cancel {
+    flex: 1;
+    background: red;
+}

@@ -23,4 +23,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.isUsername, this.isPassword);
   }
 
+  clickClear(): void{
+    this.isUsername = '';
+    this.isPassword = '';
+  }
 }

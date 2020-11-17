@@ -37,6 +37,10 @@ export class AuthService {
                     alert('LOGIN FAIL !!!');
                 }
 
+            },
+            (error) => {
+                console.log(error);
+                alert('LOGIN FAIL !!!');
             }
         );
     }

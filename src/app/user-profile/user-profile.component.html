@@ -1,0 +1,68 @@
+<div class="limiter">
+    <div class="container-fluid">
+        <div class="wrap-smallbox">
+            <div class="wrap-header">
+
+                <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
+
+                <div class="textlogo">
+                    <h1>Mahidol University</h1>
+                    <h2>Siriraj Hospital</h2>
+                </div>
+                <!--End class textlogo-->
+
+            </div>
+
+            <div class="wrap-form">
+                <form>
+                    <!-- <p>ลงทะเบียนเข้าใช้งานระบบ</p> -->
+                    <!-- <p>ข้อมูลของผู้ขอเข้าใช้งานระบบ</p> -->
+                    <div class="input-login">
+
+                        <label>Username</label>
+                        <input type="text" name="username" [(ngModel)]="isUsername"> <!-- placeholder="Enter Username"  -->
+
+                        <label>Password</label>
+                        <input type="password" name="password" [(ngModel)]="isPassword">
+
+                        <label>Re-Password</label>
+                        <input type="password" name="re-password" [(ngModel)]="isRePassword">
+
+                        <label>Name</label>
+                        <input type="text" name="name" [(ngModel)]="isName">
+
+                        <label>Surname</label>
+                        <input type="text" name="surname" [(ngModel)]="isSurname">
+
+                        <label>Telephone</label>
+                        <input type="tel" name="telephone" [(ngModel)]="isTelephone">
+
+                        <label>E-mail</label>
+                        <input type="email" name="e-mail" [(ngModel)]="isEmail">
+
+                        <label>Department</label>
+                        <select name="departmentId" id="departmentId" [(ngModel)]="isDepartmentId">
+                            <option value=0 >OUTPATIENT</option>
+                            <option value=1 >INPATIENT</option>
+                            <option value=2 >EMERGENCY</option>
+                            <option value=3 >IT</option>
+                        </select>
+
+                    </div>
+
+                    <div class="submit-btn">
+                        <button type="submit" (click)="clickRegister()" name="reg_submit"
+                            class="btn-submit">Register</button>
+                        <button type="submit" (click)="clickCancel()" name="reg_cancel"
+                            class="btn-cancel">Cancel</button>
+                    </div>
+
+                </form>
+            </div>
+            <!--End wrap-form -->
+        </div>
+        <!--End wrap-login-->
+    </div>
+    <!--container-fluid-->
+</div>
+<!--End limiter-->

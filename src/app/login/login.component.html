@@ -2,16 +2,19 @@
     <div class="container-fluid">
         <div class="wrap-smallbox">
             <div class="wrap-header">
-                <img src="../assets/Image/LogoImg.png" alt="logo" width="80" height="80">
+
+                <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
+
                 <div class="textlogo">
                     <h1>Mahidol University</h1>
                     <h2>Siriraj Hospital</h2>
                 </div> <!--End class textlogo-->
+
             </div>
 
             <div class="wrap-form">
-                <form><!--Go to "login_db.php" after click "submit"-->
-                    <p>กรอกข้อมูลเพื่อเข้าสู่ระบบ</p>
+                <form>
+                    <!-- <p>กรอกข้อมูลเพื่อเข้าสู่ระบบ</p> -->
                     <div class="input-login">
                         <label>Username</label>
                         <input type="text" name="username" [(ngModel)]="isUsername"> <!-- placeholder="Enter Username"  -->
@@ -24,6 +27,11 @@
                         <button type="submit" (click)="clickLogin()" name="login_submit" class="btn-submit">Login</button>
                         <button type="submit" (click)="clickClear()" name="login_cancel" class="btn-cancel">Clear</button>
                     </div>
+
+                    <div (click)="register()" class="reg_click">
+                        register
+                    </div>
+
                 </form>
             </div><!--End wrap-form -->           
         </div><!--End wrap-login-->        

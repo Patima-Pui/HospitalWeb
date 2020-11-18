@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { RequestLogin, ResponseModel } from '../Models/UserModel.model';
+import { RequestLogin, RequestRegister, ResponseModel } from '../Models/UserModel.model';
 
 @Injectable()
 export class AuthService {
@@ -34,7 +34,7 @@ export class AuthService {
                     this.loggedIn.next(true);
                     this.router.navigate(['/patients']);
                 } else {
-                    alert('LOGIN FAIL !!!');
+                    alert('LOGIN FAIL !');
                 }
 
             },
@@ -48,5 +48,39 @@ export class AuthService {
     logout(): void {
         this.loggedIn.next(false);
         this.router.navigate(['/login']);
+    }
+
+    register(
+        username: string, password: string, repassword: string,
+        name: string, surname: string, telephone: string,
+        email: string, departmentId: number
+    ): void {
+        const formbody = new RequestRegister({
+            Username: username,
+            Password: password,
+            RePassword: repassword,
+            Name: name,
+            Surname: surname,
+            Telephone: telephone,
+            Email: email,
+            DepartmentId: departmentId
+        });
+
+        // this.http.post('http://localhost:5015/User/login', formbody).subscribe(
+        //     // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
+        //     (response: ResponseModel) => {
+
+        //         if (response.success) {
+        //             alert('REGISTER SUCCESS');
+        //         } else {
+        //             alert('REGISTER FAIL !');
+        //         }
+
+        //     },
+        //     (error) => {
+        //         console.log(error);
+        //         alert('REGISTER FAIL !!!');
+        //     }
+        // );
     }
 }

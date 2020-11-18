@@ -26,3 +26,18 @@ export class RequestLogin {
         Object.assign(this, init);
     }
 }
+
+export class RequestRegister {
+    public Username: string;
+    public Password: string;
+    public RePassword: string;
+    public Name: string;
+    public Surname: string;
+    public Telephone: string;
+    public Email: string;
+    public DepartmentId: number;
+
+    public constructor(init?: Partial<RequestRegister>) {
+        Object.assign(this, init);
+    }
+}

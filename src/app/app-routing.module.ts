@@ -8,6 +8,7 @@ import { MenuLayoutComponent } from './layout/menu-layout.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { PatientComponent } from './patient/patient.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users/users.component';
 
 // const routes: Routes = [
@@ -45,6 +46,10 @@ const routes: Routes = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent
       }
     ]
   },

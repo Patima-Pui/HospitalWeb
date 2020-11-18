@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class LoginComponent implements OnInit {
   public isPassword: string;
 
   constructor(
+    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -26,5 +28,9 @@ export class LoginComponent implements OnInit {
   clickClear(): void{
     this.isUsername = '';
     this.isPassword = '';
+  }
+
+  register(): void{
+    this.router.navigate(['/user-profile']);
   }
 }

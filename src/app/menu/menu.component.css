@@ -5,15 +5,15 @@
 
 /*Title*/
 .header {
-        height: 90px;
-        background-color: rgb(46, 24, 75);
-        color: lightcyan;
-        padding: 5px;
-        display: flex;
-        align-items: center;
+    height: 90px;
+    background-color: rgb(46, 24, 75);
+    color: lightcyan;
+    padding: 5px;
+    display: flex;
+    align-items: center;
 }
 
-.textlogo{
+.textlogo {
     display: block;
     text-align: left;
     color: white;
@@ -26,7 +26,7 @@
     height: calc(100vh - 100px);
 }
 
-mat-drawer{
+mat-drawer {
     width: 200px;
     background-color:lightgray;
     border: 1px solid lightgray;
@@ -49,7 +49,7 @@ mat-drawer{
 }
 
 /*will show lightgray when cersor point to the nav-link */
-.nav-link:hover{ 
+.nav-link:hover { 
     color: white;
     background: grey;
 }
@@ -59,4 +59,13 @@ mat-drawer{
     color: white;
     background: grey;
     border: none;
+}
+
+.menu-right{
+    position: absolute;
+    right: 20px;
+}
+
+.btn-icon{
+    background-color: aliceblue;
 }

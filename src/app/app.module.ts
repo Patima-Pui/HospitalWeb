@@ -20,6 +20,9 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth.guard';
 import { UsersComponent } from './users/users.component';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,8 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     MenuLayoutComponent,
     LoginLayoutComponent,
     UsersComponent,
-    CommingSoonComponent
+    CommingSoonComponent,
+    UserProfileComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +48,9 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
     MatSidenavModule,
     MatTableModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule,
+    MatButtonModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

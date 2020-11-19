@@ -1,14 +1,15 @@
 export class PatientModel {
-    public HN: number;
+    public number: number;
+    public HN: string;
     public name: string;
     public surname: string;
     public age: number;
     public birthday: Date;
-    public type: string;
+    public typeId: number;
     public visit: number;
 }
 export class PatientModelList {
-    public datatable: PatientModel[];
+    public patienttable: PatientModel[];
 }
 export class DropdownTypeModel {
     public Id: number;

@@ -69,3 +69,21 @@ mat-drawer {
 .btn-icon{
     background-color: aliceblue;
 }
+
+.txt-username{
+    text-align: center;
+    font-size: 16px;
+    padding: 14px 5px 14px 5px;
+}
+
+.btn-menu{
+    background-color: #e8e8e8;
+}
+
+.btn-menu:hover{
+    background-color:#bababa;
+}
+
+::ng-deep .mat-menu-content{
+    padding: 0px !important;
+}

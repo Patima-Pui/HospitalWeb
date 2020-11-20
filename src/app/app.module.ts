@@ -23,6 +23,7 @@ import { CommingSoonComponent } from './comming-soon/comming-soon.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MatIconModule,
     HttpClientModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

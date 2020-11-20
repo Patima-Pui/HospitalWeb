@@ -47,4 +47,9 @@ export class PatientComponent implements OnInit {
 
     });
   }
+
+  public click(): void {
+    alert('click icon');
+  }
+
 }

@@ -1,11 +1,11 @@
 export class PatientModel {
-    public number: number;
-    public HN: string;
+    public hn: number;
     public name: string;
     public surname: string;
     public age: number;
     public birthday: Date;
     public typeId: number;
+    public typeName: string;
     public visit: number;
 }
 export class PatientModelList {

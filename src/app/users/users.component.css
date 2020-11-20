@@ -1,0 +1,42 @@
+.account {
+    background-color: lightblue;
+    height: 100%;
+    padding: 10px;
+}
+.wrap-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+  }
+  
+.wrap-inputform {
+    width: 100%;
+  }
+
+.list-table{
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+}
+
+.th-header{
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+.td-contain {
+    text-align: center;
+}
+
+.icon-log:hover {
+    cursor: pointer;
+}

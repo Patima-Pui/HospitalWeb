@@ -1,15 +1,15 @@
 export class UserModel {
     public id: number;
+    public username: string;
     public name: string;
     public surname: string;
-    public username: string;
-    public date: Date;
+    public createdate: Date;
 }
 
 export class UserModelList {
-    public datatable: UserModel[];
+    public usertable: UserModel[];
 }
-////////////////////////////////////////////////////////
+
 export class ResponseModel {
     public success: boolean;
 
@@ -40,4 +40,16 @@ export class RequestRegister {
     public constructor(init?: Partial<RequestRegister>) {
         Object.assign(this, init);
     }
+}
+
+export class TestModel {
+    public id: number;
+    public name: string;
+    public surname: string;
+    public username: string;
+    public date: Date;
+}
+
+export class TestModelList {
+    public datatable: TestModel[];
 }

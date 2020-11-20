@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserModel, UserModelList } from '../Models/UserModel.model';
+import { TestModel, TestModelList } from '../Models/UserModel.model';
 
 @Component({
   selector: 'app-account',
@@ -10,18 +10,18 @@ import { UserModel, UserModelList } from '../Models/UserModel.model';
 })
 export class AccountComponent implements OnInit {
 
-  public objectTable: UserModelList;
+  public objectTable: TestModelList;
   public formGroupNaja: FormGroup;
 
   public displayedColumns: string[] = ['userId', 'username', 'name', 'surname', 'date', 'log'];
-  public dataSource: UserModel[];
+  public dataSource: TestModel[];
 
   constructor(
     private http: HttpClient
   ) { }
 
   public getData(): void {
-    this.http.get('http://localhost:5000/UserInfo/GetList').subscribe((data: UserModelList) => {
+    this.http.get('http://localhost:5015/UserInfo/GetList').subscribe((data: TestModelList) => {
 
       this.objectTable = data;
       this.dataSource = this.objectTable.datatable;

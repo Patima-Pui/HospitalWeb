@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
+import { Global } from '../global/global';
 
 @Component({
   selector: 'app-menu',
@@ -9,12 +10,15 @@ import { AuthService } from '../auth/auth.service';
 })
 export class MenuComponent implements OnInit {
 
+  public isUsername = '';
+
   constructor(
     private router: Router,
     private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    this.isUsername = Global._USERNAME;
   }
 
   routeToPatient(): void {

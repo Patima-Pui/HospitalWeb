@@ -42,6 +42,15 @@ export class RequestRegister {
     }
 }
 
+export class DropdownDepartmentModel {
+    public id: number;
+    public name: string;
+
+    public constructor(init?: Partial<DropdownDepartmentModel>) {
+        Object.assign(this, init);
+    }
+}
+
 export class TestModel {
     public id: number;
     public name: string;

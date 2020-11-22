@@ -14,38 +14,35 @@
             </div>
 
             <div class="wrap-form">
-                <form>
+                <form [formGroup]="formGroup">
                     <!-- <p>ลงทะเบียนเข้าใช้งานระบบ</p> -->
                     <!-- <p>ข้อมูลของผู้ขอเข้าใช้งานระบบ</p> -->
                     <div class="input-login">
 
                         <label>Username</label>
-                        <input type="text" name="username" [(ngModel)]="isUsername" autocomplete="false"> <!-- placeholder="Enter Username"  -->
+                        <input type="text" name="username" formControlName="isUsername" autocomplete="false"> <!-- placeholder="Enter Username"  -->
 
                         <label>Password</label>
-                        <input type="password" name="password" [(ngModel)]="isPassword" autocomplete="false">
+                        <input type="password" name="password" formControlName="isPassword" autocomplete="false">
 
                         <label>Re-Password</label>
-                        <input type="password" name="re-password" [(ngModel)]="isRePassword" autocomplete="false">
+                        <input type="password" name="re-password" formControlName="isRePassword" autocomplete="false">
 
                         <label>Name</label>
-                        <input type="text" name="name" [(ngModel)]="isName" autocomplete="false">
+                        <input type="text" name="name" formControlName="isName" autocomplete="false">
 
                         <label>Surname</label>
-                        <input type="text" name="surname" [(ngModel)]="isSurname" autocomplete="false">
+                        <input type="text" name="surname" formControlName="isSurname" autocomplete="false">
 
                         <label>Telephone</label>
-                        <input type="tel" name="telephone" [(ngModel)]="isTelephone" autocomplete="false">
+                        <input type="tel" name="telephone" formControlName="isTelephone" autocomplete="false">
 
                         <label>E-mail</label>
-                        <input type="email" name="e-mail" [(ngModel)]="isEmail" autocomplete="false">
+                        <input type="email" name="e-mail" formControlName="isEmail" autocomplete="false">
 
                         <label>Department</label>
-                        <select name="departmentId" id="departmentId" [(ngModel)]="isDepartmentId">
-                            <option value=0 >OUTPATIENT</option>
-                            <option value=1 >INPATIENT</option>
-                            <option value=2 >EMERGENCY</option>
-                            <option value=3 >IT</option>
+                        <select name="departmentId" id="departmentId" formControlName="isDepartmentId">
+                            <option *ngFor="let item of departmentList" [value]="item.id" >{{item.name}}</option>
                         </select>
 
                     </div>

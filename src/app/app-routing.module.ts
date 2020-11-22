@@ -7,6 +7,7 @@ import { LoginLayoutComponent } from './layout/login-layout.component';
 import { MenuLayoutComponent } from './layout/menu-layout.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
+import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { PatientComponent } from './patient/patient.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users/users.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
       {
         path: 'commig-soon',
         component: CommingSoonComponent
+      },
+      {
+        path: 'patients/patient-info',
+        component: PatientInfoComponent
       }
     ]
   },

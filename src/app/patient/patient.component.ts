@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
 
 @Component({
@@ -28,7 +29,8 @@ export class PatientComponent implements OnInit {
   ];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,7 @@ export class PatientComponent implements OnInit {
   public getPatient(): void {
     const searchTxt = this.formGroup.value.isSearch;
     const typeId = this.formGroup.value.isType;
-    const url = 'http://localhost:5015/Patient/PatientInfo?SearchText=' + searchTxt + '&TypeId=' + typeId;
+    const url = 'http://localhost:5015/Patient/QueryPatient?SearchText=' + searchTxt + '&TypeId=' + typeId;
     this.http.get(url).subscribe((maindata: PatientModelList) => {
 
       this.ObjectTable = maindata;
@@ -72,8 +74,13 @@ export class PatientComponent implements OnInit {
     });
   }
 
-  public click(): void {
-    alert('click icon');
+  public gotoPatientInfo(id: any): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        Hn: id
+      }
+    };
+    this.router.navigate(['/patients/patient-info'], navigationExtras);
   }
 
 }

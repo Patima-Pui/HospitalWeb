@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
+import { PatientInfoComponent } from './patient-info/patient-info.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MatSelectModule } from '@angular/material/select';
     LoginLayoutComponent,
     UsersComponent,
     CommingSoonComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PatientInfoComponent
   ],
   imports: [
     FormsModule,

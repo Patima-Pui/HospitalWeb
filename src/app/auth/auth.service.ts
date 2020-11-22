@@ -25,7 +25,7 @@ export class AuthService {
             Password: password
         });
 
-        this.http.post('http://localhost:5015/User/login', body).subscribe(
+        this.http.post('http://localhost:5015/User/Login', body).subscribe(
             // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
             (response: ResponseModel) => {
 
@@ -50,37 +50,4 @@ export class AuthService {
         this.router.navigate(['/login']);
     }
 
-    register(
-        username: string, password: string, repassword: string,
-        name: string, surname: string, telephone: string,
-        email: string, departmentId: number
-    ): void {
-        const formbody = new RequestRegister({
-            Username: username,
-            Password: password,
-            RePassword: repassword,
-            Name: name,
-            Surname: surname,
-            Telephone: telephone,
-            Email: email,
-            DepartmentId: departmentId
-        });
-
-        // this.http.post('http://localhost:5015/User/login', formbody).subscribe(
-        //     // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
-        //     (response: ResponseModel) => {
-
-        //         if (response.success) {
-        //             alert('REGISTER SUCCESS');
-        //         } else {
-        //             alert('REGISTER FAIL !');
-        //         }
-
-        //     },
-        //     (error) => {
-        //         console.log(error);
-        //         alert('REGISTER FAIL !!!');
-        //     }
-        // );
-    }
 }

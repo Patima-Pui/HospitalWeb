@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
 
 @Component({
@@ -9,25 +10,48 @@ import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelLis
 })
 
 export class PatientComponent implements OnInit {
+
   // Create Patient Object Table
   public ObjectTable: PatientModelList;
   public DropdownType: DropdownTypeModelList;
+
   // Create Column Table
   public displayedColumns: string[] = ['number', 'HN', 'name', 'surname', 'age', 'birthday', 'type', 'visit', 'account'];
   public dataSource: PatientModel[];
-  public typeId: DropdownTypeModel[];
+
+  public formGroup: FormGroup;
+  public typeList: DropdownTypeModel[] = [
+    new DropdownTypeModel({ id: -1, name: 'All' }),
+    new DropdownTypeModel({ id: 0, name: 'Normal' }),
+    new DropdownTypeModel({ id: 1, name: 'VIP' }),
+    new DropdownTypeModel({ id: 2, name: 'Blacklist' })
+  ];
 
   constructor(
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    // default data
+    this.initForm();
+    this.formGroup.controls.isType.setValue(-1);
+
     this.getPatient();
-    // this.getType();
+  }
+
+  public initForm(): void {
+    this.formGroup = new FormGroup({
+      isSearch: new FormControl(''),
+      isType: new FormControl('')
+    });
+
   }
 
   public getPatient(): void {
-    this.http.get('http://localhost:5015/Patient/PatientInfo').subscribe((maindata: PatientModelList ) => {
+    const searchTxt = this.formGroup.value.isSearch;
+    const typeId = this.formGroup.value.isType;
+    const url = 'http://localhost:5015/Patient/PatientInfo?SearchText=' + searchTxt + '&TypeId=' + typeId;
+    this.http.get(url).subscribe((maindata: PatientModelList) => {
 
       this.ObjectTable = maindata;
       this.dataSource = this.ObjectTable.patienttable;
@@ -38,10 +62,10 @@ export class PatientComponent implements OnInit {
   }
 
   public getType(): void {
-    this.http.get('#').subscribe((typedata: DropdownTypeModelList ) => {
+    this.http.get('#').subscribe((typedata: DropdownTypeModelList) => {
 
       this.DropdownType = typedata;
-      this.typeId = this.DropdownType.typelist;
+      // this.typeId = this.DropdownType.typelist;
 
       console.log('Type from backend: ', this.DropdownType);
 

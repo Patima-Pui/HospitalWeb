@@ -12,8 +12,12 @@ export class PatientModelList {
     public patienttable: PatientModel[];
 }
 export class DropdownTypeModel {
-    public Id: number;
+    public id: number;
     public name: string;
+
+    public constructor(init?: Partial<DropdownTypeModel>) {
+        Object.assign(this, init);
+    }
 }
 export class DropdownTypeModelList {
     public typelist: DropdownTypeModel[];

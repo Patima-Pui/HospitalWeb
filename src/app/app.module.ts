@@ -24,6 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { MatDividerModule } from '@angular/material/divider';
     HttpClientModule,
     MatMenuModule,
     MatButtonModule,
-    MatDividerModule
+    MatDividerModule,
+    MatSelectModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

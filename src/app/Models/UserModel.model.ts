@@ -51,6 +51,14 @@ export class DropdownDepartmentModel {
     }
 }
 
+export class DropdownDepartmentModelList {
+    public departmentList: DropdownDepartmentModel[];
+
+    public constructor(init?: Partial<DropdownDepartmentModelList>){
+        Object.assign(this, init);
+    }
+}
+
 export class TestModel {
     public id: number;
     public name: string;

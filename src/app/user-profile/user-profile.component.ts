@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DropdownDepartmentModel, RequestRegister, ResponseModel } from '../Models/UserModel.model';
+import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel } from '../Models/UserModel.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -20,11 +20,7 @@ export class UserProfileComponent implements OnInit {
   public isEmail: string;
   public isDepartmentId: number;
   public formGroup: FormGroup;
-  public departmentList: DropdownDepartmentModel[] = [
-    new DropdownDepartmentModel({ id: 0, name: 'OUTPATIENT'}),
-    new DropdownDepartmentModel({ id: 1, name: 'INPATIENT'}),
-    new DropdownDepartmentModel({ id: 2, name: 'EMERGENCY'}),
-    new DropdownDepartmentModel({ id: 3, name: 'IT'})];
+  public departmentList: DropdownDepartmentModel[];
 
   constructor(
     private router: Router,
@@ -33,6 +29,7 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.getDepartmentList();
   }
 
   public initForm(): void {
@@ -80,5 +77,13 @@ export class UserProfileComponent implements OnInit {
 
   clickCancel(): void {
     this.router.navigate(['/login']);
+  }
+
+  getDepartmentList(): void {
+    this.http.get('http://localhost:5015/User/DropdownDepartment').subscribe((data: DropdownDepartmentModelList) => {
+      if (data) {
+        this.departmentList = data.departmentList;
+      }
+    });
   }
 }

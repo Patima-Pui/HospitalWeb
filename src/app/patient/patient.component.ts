@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
 
@@ -11,6 +13,7 @@ import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelLis
 })
 
 export class PatientComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   // Create Patient Object Table
   public ObjectTable: PatientModelList;
@@ -18,7 +21,8 @@ export class PatientComponent implements OnInit {
 
   // Create Column Table
   public displayedColumns: string[] = ['number', 'HN', 'name', 'surname', 'age', 'birthday', 'type', 'visit', 'account'];
-  public dataSource: PatientModel[];
+  // public dataSource: PatientModel[];
+  public dataSource = new MatTableDataSource<PatientModel>();
 
   public formGroup: FormGroup;
   public typeList: DropdownTypeModel[];
@@ -40,6 +44,7 @@ export class PatientComponent implements OnInit {
     this.formGroup.controls.isType.setValue(-1);
 
     this.getPatient();
+    this.getType();
   }
 
   public initForm(): void {
@@ -57,8 +62,8 @@ export class PatientComponent implements OnInit {
     this.http.get(url).subscribe((maindata: PatientModelList) => {
 
       this.ObjectTable = maindata;
-      this.dataSource = this.ObjectTable.patienttable;
-
+      this.dataSource = new MatTableDataSource<PatientModel>(this.ObjectTable.patienttable);
+      this.dataSource.paginator = this.paginator;
       console.log('Patient Information from backend: ', this.ObjectTable);
 
     });
@@ -73,10 +78,10 @@ export class PatientComponent implements OnInit {
     });
   }
 
-  public gotoPatientInfo(id: any): void {
+  public gotoPatientInfo(id: number): void {
     const navigationExtras: NavigationExtras = {
       queryParams: {
-        Hn: id
+        Hn: id,
       }
     };
     this.router.navigate(['/patients/patient-info'], navigationExtras);

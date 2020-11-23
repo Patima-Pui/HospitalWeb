@@ -26,6 +26,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { PatientInfoComponent } from './patient-info/patient-info.component';
     MatMenuModule,
     MatButtonModule,
     MatDividerModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

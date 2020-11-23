@@ -82,5 +82,4 @@ export class PatientComponent implements OnInit {
     };
     this.router.navigate(['/patients/patient-info'], navigationExtras);
   }
-
 }

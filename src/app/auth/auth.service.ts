@@ -30,7 +30,7 @@ export class AuthService {
             (response: ResponseModel) => {
 
                 if (response.success) {
-                    alert('LOGIN SUCCESS');
+                    // alert('LOGIN SUCCESS');
                     this.loggedIn.next(true);
                     this.router.navigate(['/patients']);
                 } else {

@@ -7,6 +7,8 @@ export class PatientModel {
     public typeId: number;
     public typeName: string;
     public visit: number;
+    public appointment: Date;
+    public doctor: string;
 }
 export class PatientModelList {
     public patienttable: PatientModel[];

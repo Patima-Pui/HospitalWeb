@@ -1,7 +1,7 @@
-<div class="limiter">
-    <div class="container-fluid">
+<!-- <div class="limiter"> -->
+    <div [ngClass]="{'container-regiter':checkAction(), 'container':!checkAction()}">
         <div class="wrap-smallbox">
-            <div class="wrap-header">
+            <div class="wrap-header" *ngIf="action=='register'">
 
                 <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
 
@@ -61,5 +61,5 @@
         <!--End wrap-login-->
     </div>
     <!--container-fluid-->
-</div>
+<!-- </div> -->
 <!--End limiter-->

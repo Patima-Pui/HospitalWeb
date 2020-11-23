@@ -15,9 +15,20 @@ body, html {
     margin: 0 auto;
 }
 
-.container-fluid {
+.container-regiter {
     width: 100%;  
     min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: #cee4eb;
+}
+
+.container {
+    width: 100%;
+    min-height: calc(100vh - 100px);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

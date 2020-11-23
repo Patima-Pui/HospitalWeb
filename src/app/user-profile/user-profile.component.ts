@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel } from '../Models/UserModel.model';
 
 @Component({
@@ -21,15 +21,30 @@ export class UserProfileComponent implements OnInit {
   public isDepartmentId: number;
   public formGroup: FormGroup;
   public departmentList: DropdownDepartmentModel[];
+  public action: string; // register, add, edit
+  public userId: number;
 
   constructor(
-    private router: Router,
+    private router: Router, // transmit
+    private route: ActivatedRoute, // receive
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
+    this.action = 'register';
     this.initForm();
     this.getDepartmentList();
+    this.getExtras();
+  }
+
+  getExtras(): void {
+    this.route.queryParams.subscribe((param) => {
+      if (param.Action !== undefined) {
+        this.action = param.Action;
+        this.userId = param.UserId;
+        console.log('param = ', param);
+      }
+    });
   }
 
   public initForm(): void {
@@ -85,5 +100,9 @@ export class UserProfileComponent implements OnInit {
         this.departmentList = data.departmentList;
       }
     });
+  }
+
+  checkAction(): boolean {
+    return this.action === 'register' ? true : false;
   }
 }

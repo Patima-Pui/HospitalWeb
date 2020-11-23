@@ -21,12 +21,13 @@ export class PatientComponent implements OnInit {
   public dataSource: PatientModel[];
 
   public formGroup: FormGroup;
-  public typeList: DropdownTypeModel[] = [
+  public typeList: DropdownTypeModel[];
+  /*= [
     new DropdownTypeModel({ id: -1, name: 'All' }),
     new DropdownTypeModel({ id: 0, name: 'Normal' }),
     new DropdownTypeModel({ id: 1, name: 'VIP' }),
     new DropdownTypeModel({ id: 2, name: 'Blacklist' })
-  ];
+  ]*/
 
   constructor(
     private http: HttpClient,
@@ -64,13 +65,11 @@ export class PatientComponent implements OnInit {
   }
 
   public getType(): void {
-    this.http.get('#').subscribe((typedata: DropdownTypeModelList) => {
-
-      this.DropdownType = typedata;
-      // this.typeId = this.DropdownType.typelist;
-
-      console.log('Type from backend: ', this.DropdownType);
-
+    this.http.get('http://localhost:5015/Patient/DropdownType').subscribe((data: DropdownTypeModelList) => {
+      if (data) {
+        this.typeList = data.typeList;
+        console.log('Type from backend: ', this.typeList);
+      }
     });
   }
 

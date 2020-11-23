@@ -22,5 +22,5 @@ export class DropdownTypeModel {
     }
 }
 export class DropdownTypeModelList {
-    public typelist: DropdownTypeModel[];
+    public typeList: DropdownTypeModel[];
 }

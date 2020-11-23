@@ -33,6 +33,6 @@ export class LoginComponent implements OnInit {
   }
 
   register(): void{
-    this.router.navigate(['/user-profile']);
+    this.router.navigate(['/register']);
   }
 }

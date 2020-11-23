@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
 import { UserModel, UserModelList } from '../Models/UserModel.model';
 
 @Component({
@@ -19,6 +20,7 @@ export class UsersComponent implements OnInit {
   public formGroup: FormGroup;
 
   constructor(
+    private router: Router,
     private http: HttpClient
   ) { }
 
@@ -62,4 +64,14 @@ export class UsersComponent implements OnInit {
     alert('click icon');
   }
 
+  public clickEdit(id: number): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        UserId: id,
+        Action: 'edit'
+      }
+    };
+    this.router.navigate(['/user-profile'], navigationExtras);
+
+  }
 }

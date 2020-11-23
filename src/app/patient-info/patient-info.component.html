@@ -1,1 +1,33 @@
-<p>patient-info works!</p>
+<div class="account">
+    <div class="account-info">
+        <div class="content-left">
+            <img src="../assets/Image/default-user.png" alt="default-user" class="size-image">
+            <div class="text-large">
+                {{patientInfo.name}}&nbsp;{{patientInfo.surname}}
+            </div>
+        </div>
+        <div class="content-right">
+            <div class="text-normal">
+                HN : {{patientInfo.hn}}
+            </div>
+            <div class="text-normal">
+                Birthday : {{patientInfo.birthday  | date: 'dd/MM/yyyy'}}
+            </div>
+            <div class="text-normal">
+                Age : {{patientInfo.age}}
+            </div>
+            <div class="text-normal">
+                Type : {{patientInfo.typeName}}
+            </div>
+            <div class="text-normal">
+                Frequency : {{patientInfo.visit}}
+            </div>
+            <div class="text-normal">
+                Appointment : {{patientInfo.appointment  | date: 'dd/MM/yyyy'}}
+            </div>
+            <div class="text-normal">
+                Doctor : {{patientInfo.doctor}}
+            </div>
+        </div>
+    </div>
+</div>

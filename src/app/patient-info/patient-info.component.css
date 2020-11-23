@@ -1,0 +1,43 @@
+.account {
+    background-color: lightblue;
+    height: 100%;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.account-info {
+    background-color: white;
+    border-radius: 10px;
+    height: 96%;
+    display: flex;
+    align-items: center;
+}
+
+.content-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.content-right {
+    flex: 1;
+    padding: 20px;
+}
+
+.size-image {
+    display: block;
+    width: 300px;
+    height: 300px;   
+    margin: auto;
+}
+
+.text-large {
+    font-size: large;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.text-normal {
+    font-size: medium;
+    padding: 10px;
+}

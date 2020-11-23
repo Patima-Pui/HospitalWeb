@@ -41,6 +41,10 @@ const routes: Routes = [
       {
         path: 'patients/patient-info',
         component: PatientInfoComponent
+      },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent
       }
     ]
   },
@@ -53,7 +57,7 @@ const routes: Routes = [
         component: LoginComponent
       },
       {
-        path: 'user-profile',
+        path: 'register',
         component: UserProfileComponent
       }
     ]

@@ -1,13 +1,7 @@
 .account {
-    background-color: lightblue;
-    height: 100%;
-    padding: 10px;
-}
-
-.list-table {
     background-color: white;
-    border-radius: 10px;
-    padding: 10px;
+    height: calc(100vh - 120px);
+    padding: 10px 50px;
 }
 
 table {
@@ -48,6 +42,23 @@ th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:
     padding-left: 0px;
 }
 
-.search-box {
-    width: 90%;
+.search-box{
+    width: 98%;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.btn-add {
+    background-color: #2e184b;
+    color: white;
+    height: 50px;
+    width: 100px;
+    margin-top: 0.25em;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
 }

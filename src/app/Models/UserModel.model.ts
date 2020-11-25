@@ -28,6 +28,7 @@ export class RequestLogin {
 }
 
 export class RequestRegister {
+    public Id: number;
     public Username: string;
     public Password: string;
     public RePassword: string;
@@ -38,6 +39,19 @@ export class RequestRegister {
     public DepartmentId: number;
 
     public constructor(init?: Partial<RequestRegister>) {
+        Object.assign(this, init);
+    }
+}
+
+export class UserProfileModel {
+    public username: string;
+    public name: string;
+    public surname: string;
+    public telephone: string;
+    public email: string;
+    public departmentId: number;
+
+    public constructor(init?: Partial<UserProfileModel>) {
         Object.assign(this, init);
     }
 }

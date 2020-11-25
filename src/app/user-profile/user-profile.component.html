@@ -1,65 +1,79 @@
-<!-- <div class="limiter"> -->
-    <div [ngClass]="{'container-regiter':checkAction(), 'container':!checkAction()}">
-        <div class="wrap-smallbox">
-            <div class="wrap-header" *ngIf="action=='register'">
-
-                <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
-
-                <div class="textlogo">
-                    <h1>Mahidol University</h1>
-                    <h2>Siriraj Hospital</h2>
-                </div>
-                <!--End class textlogo-->
-
+<div [ngClass]="{'container-regiter':checkAction(), 'container':!checkAction()}">
+    <div [ngClass]="{'wrap-smallbox':checkAction(), 'wrap-box':!checkAction()}">
+        <div class="wrap-header" *ngIf="action=='register'">     <!-- Header Register Page -->
+            <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
+            <div class="textlogo">
+                <h1>Mahidol University</h1>
+                <h2>Siriraj Hospital</h2>
             </div>
+        </div>
 
-            <div class="wrap-form">
-                <form [formGroup]="formGroup">
-                    <!-- <p>ลงทะเบียนเข้าใช้งานระบบ</p> -->
-                    <!-- <p>ข้อมูลของผู้ขอเข้าใช้งานระบบ</p> -->
-                    <div class="input-login">
+        <div *ngIf="action=='edit'">    <!-- Header Edit User Profile Page -->
+            <h2>Edit User Profile</h2>
+        </div>
 
+        <div *ngIf="action=='add'">    <!-- Header Add New User Page -->
+            <h2>Add New User</h2>
+        </div>
+
+        <div class="wrap-form">
+            <form [formGroup]="formGroup" autocomplete="off">
+                <div class="input-login">
+                    <div class="row">
                         <label>Username</label>
-                        <input type="text" name="username" formControlName="isUsername" autocomplete="false" required> <!-- placeholder="Enter Username"  -->
-
+                        <input type="text" name="username" formControlName="isUsername" autocomplete="off"
+                            [attr.disabled]="action=='edit' ? '' : null" required>
+                        <!-- placeholder="Enter Username"  -->
+                    </div>
+                    <div class="row" *ngIf="action!=='edit'">
                         <label>Password</label>
-                        <input type="password" name="password" formControlName="isPassword" autocomplete="false" required>
+                        <input type="password" name="password" formControlName="isPassword" autocomplete="off" required>
+                    </div>
 
+                    <div class="row" *ngIf="action!=='edit'">
                         <label>Re-Password</label>
-                        <input type="password" name="re-password" formControlName="isRePassword" autocomplete="false" required>
-
+                        <input type="password" name="re-password" formControlName="isRePassword" autocomplete="false"
+                            required>
+                    </div>
+                    <div class="row">
                         <label>Name</label>
                         <input type="text" name="name" formControlName="isName" autocomplete="false" required>
-
+                    </div>
+                    <div class="row">
                         <label>Surname</label>
                         <input type="text" name="surname" formControlName="isSurname" autocomplete="false" required>
-
+                    </div>
+                    <div class="row">
                         <label>Telephone</label>
                         <input type="tel" name="telephone" formControlName="isTelephone" autocomplete="false" required>
-
+                    </div>
+                    <div class="row">
                         <label>E-mail</label>
                         <input type="email" name="e-mail" formControlName="isEmail" autocomplete="false" required>
-
+                    </div>
+                    <div class="row">
                         <label>Department</label>
                         <select name="departmentId" id="departmentId" formControlName="isDepartmentId">
-                            <option *ngFor="let item of departmentList" [value]="item.id" >{{item.name}}</option>
+                            <option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</option>
                         </select>
-
                     </div>
+                </div>
 
-                    <div class="submit-btn">
-                        <button type="submit" (click)="clickRegister()" name="reg_submit"
-                            class="btn-submit">Register</button>
-                        <button type="submit" (click)="clickCancel()" name="reg_cancel"
-                            class="btn-cancel">Cancel</button>
-                    </div>
+                <div [ngClass]="{'btn-row-register':checkAction(), 'btn-row':!checkAction()}">
+                    <button type="submit" *ngIf="action=='register'" (click)="clickRegister()"
+                        class="btn-submit">Register</button>
+                    <button type="submit" *ngIf="action=='register'" (click)="clickCancelRegister()"
+                        class="btn-cancel">Cancel</button>
 
-                </form>
-            </div>
-            <!--End wrap-form -->
+                    <button type="submit" *ngIf="action=='add'" (click)="clickAdd()" 
+                        class="btn-submit">Add</button>
+                    <button type="submit" *ngIf="action=='edit'" (click)="clickEdit()" 
+                        class="btn-submit">Save</button>
+
+                    <button type="submit" *ngIf="action!='register'" (click)="clickCancel()"
+                        class="btn-cancel">Cancel</button>
+                </div>
+            </form>
         </div>
-        <!--End wrap-login-->
     </div>
-    <!--container-fluid-->
-<!-- </div> -->
-<!--End limiter-->
+</div>

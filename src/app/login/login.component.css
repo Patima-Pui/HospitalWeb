@@ -36,94 +36,68 @@ body, html {
 }
 
 /* Set all element in header box at center*/
-.wrap-smallbox .wrap-header {
+.wrap-header {
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 10px ;
+    border-radius: 10px;
     background: rgb(46, 24, 75);
-    padding: 5px;
+    /* padding: 5px;*/
 }
 
-.wrap-smallbox .wrap-header .size-image {
+.size-image {
     display: block;
     width: 80px;
     height: 80px;
 }
 
-.wrap-smallbox .wrap-header .textlogo{
+.textlogo{
     text-align: left;
     color: white;
     margin-top: 10px;
     margin-left: 10px;
 }
 
-.wrap-smallbox .wrap-form {
-    margin: 0px auto ;
-    padding: 10px 30px;
+.wrap-form {
+    padding: 10px;
 }
-
-/*.wrap-smallbox .wrap-form  h7{
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-.wrap-smallbox .wrap-form  p{
-    font-size: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-.wrap-smallbox .wrap-form  a{
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}*/
 
 .input-login label {
     display: block;
-    width: 100%;
-    padding: 5px 10px;
-    margin: 0px ;
-    text-align: left;
+    padding: 5px 0px;
     font-weight: bold;
 }
 
 .input-login input {
     display: block;
     width: 100%;
-    padding: 5px 10px;
-    margin: 0px ;
-    border-radius: 25px;
-    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
 }
 
-.submit-btn {
+.btn-row {
     margin: 10px 0px ; /*Set margin top and bottom 10px and set margin left and right 0px*/
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.submit-btn button {
-    width: 50%;   
-    margin: 10px ;
-    padding: 5px 10px;
+button {
+    margin: 5px;
+    padding: 10px;
     color: white;
     border: none;
     border-radius: 25px;
 }
 
-.submit-btn .btn-submit {
+.btn-submit {
     flex: 1;
-    background:rgb(50, 235, 203);
+    background:Turquoise;
 }
 
-.submit-btn .btn-cancel {
+.btn-cancel {
     flex: 1;
     background: red;
 }

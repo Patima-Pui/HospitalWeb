@@ -1,12 +1,6 @@
 .account {
-    background-color: lightblue;
-    height: 100%;
-    padding: 10px;
-    overflow: hidden;
-}
-
-.list-table{
     background-color: white;
-    border-radius: 10px;
-    padding: 10px;
+    height: calc(100vh - 120px);
+    padding: 10px 50px;
+    overflow: hidden;
 }

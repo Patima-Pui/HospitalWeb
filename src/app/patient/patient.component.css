@@ -1,13 +1,7 @@
 .account {
-    background-color: lightblue;
-    height: 100%;
-    padding: 10px;
-}
-
-.list-table{
     background-color: white;
-    border-radius: 10px;
-    padding: 10px;
+    height: calc(100vh - 120px);
+    padding: 10px 50px;
 }
 
 table {
@@ -33,12 +27,12 @@ table {
 }
 
 .search-box {
-    width: 70%;
+    width: 600px;
 }
 
 .type-box {
-    margin-left: 20px;
-    width: 15%;
+    margin-left: 25px;
+    width: 160px;
 }
 
 th.mat-header-cell:last-of-type, td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
@@ -54,13 +48,22 @@ th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:
     border-radius: 10px;
     height: 50px;
     width: 70px;
-    margin-left: 20px;
 }
 
-.icon .camera{
-    align-items: center;
+a {
+    text-decoration: none;/*delete underline*/
+}
+
+.icon-camera{
+    display: block;
+    width: 100%;
+    color: lightskyblue;
 }
 
 .btn-camera:hover {
     cursor: pointer;
+}
+.row {
+    display: flex;
+    justify-content:space-between; 
 }

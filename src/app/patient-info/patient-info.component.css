@@ -1,14 +1,13 @@
 .account {
-    background-color: lightblue;
+    background-color:  white;
     height: 100%;
-    padding: 10px;
+    padding: 10px 50px;
     overflow: hidden;
 }
 
 .account-info {
-    background-color: white;
     border-radius: 10px;
-    height: 96%;
+    border : dotted gray 2px;
     display: flex;
     align-items: center;
 }

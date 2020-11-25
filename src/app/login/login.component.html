@@ -2,19 +2,15 @@
     <div class="container-fluid">
         <div class="wrap-smallbox">
             <div class="wrap-header">
-
                 <img src="../assets/Image/LogoImg.png" alt="logo" class="size-image">
-
                 <div class="textlogo">
                     <h1>Mahidol University</h1>
                     <h2>Siriraj Hospital</h2>
-                </div> <!--End class textlogo-->
-
+                </div>
             </div>
 
             <div class="wrap-form">
                 <form>
-                    <!-- <p>กรอกข้อมูลเพื่อเข้าสู่ระบบ</p> -->
                     <div class="input-login">
                         <label>Username</label>
                         <input type="text" name="username" [(ngModel)]="isUsername"> <!-- placeholder="Enter Username"  -->
@@ -23,9 +19,9 @@
                         <input type="password" name="password"  [(ngModel)]="isPassword">
                     </div>
 
-                    <div class="submit-btn">
-                        <button type="submit" (click)="clickLogin()" name="login_submit" class="btn-submit">Login</button>
-                        <button type="submit" (click)="clickClear()" name="login_cancel" class="btn-cancel">Clear</button>
+                    <div class="btn-row">
+                        <button type="submit" (click)="clickLogin()" class="btn-submit">Login</button>
+                        <button type="submit" (click)="clickClear()" class="btn-cancel">Clear</button>
                     </div>
 
                     <div (click)="register()" class="reg_click">
@@ -33,7 +29,7 @@
                     </div>
 
                 </form>
-            </div><!--End wrap-form -->           
-        </div><!--End wrap-login-->        
-    </div><!--container-fluid-->   
-</div><!--End limiter-->   
+            </div>           
+        </div>      
+    </div> 
+</div>  

@@ -29,6 +29,7 @@ import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagelogComponent } from './managelog/managelog.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ManagelogComponent } from './managelog/managelog.component';
     MatButtonModule,
     MatDividerModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTabsModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]

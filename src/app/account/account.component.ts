@@ -26,7 +26,7 @@ export class AccountComponent implements OnInit {
       this.objectTable = data;
       this.dataSource = this.objectTable.datatable;
 
-      console.log('Information from backend: ', this.objectTable);
+      // console.log('Information from backend: ', this.objectTable);
 
     });
   }

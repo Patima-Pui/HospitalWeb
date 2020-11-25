@@ -28,6 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ManagelogComponent } from './managelog/managelog.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommingSoonComponent,
     UserProfileComponent,
     PatientInfoComponent,
-    DashboardComponent
+    DashboardComponent,
+    ManagelogComponent
   ],
   imports: [
     FormsModule,

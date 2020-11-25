@@ -27,6 +27,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSelectModule } from '@angular/material/select';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     UsersComponent,
     CommingSoonComponent,
     UserProfileComponent,
-    PatientInfoComponent
+    PatientInfoComponent,
+    DashboardComponent
   ],
   imports: [
     FormsModule,

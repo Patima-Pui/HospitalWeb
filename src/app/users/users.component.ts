@@ -45,7 +45,7 @@ export class UsersComponent implements OnInit {
       this.objectUserTable = userdata;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
-      console.log('User Information from backend: ', this.objectUserTable);
+      // console.log('User Information from backend: ', this.objectUserTable);
     });
   }
 
@@ -56,7 +56,7 @@ export class UsersComponent implements OnInit {
       this.objectUserTable = queryuser;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
-      console.log('User feedback: ', this.objectUserTable);
+      // console.log('User feedback: ', this.objectUserTable);
 
     });
   }

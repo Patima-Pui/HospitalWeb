@@ -26,7 +26,7 @@ export class PatientInfoComponent implements OnInit {
     this.route.queryParams.subscribe((param) => {
       if (param) {
         this.patientId = param.Hn;
-        console.log('patientId=> ', this.patientId);
+        // console.log('patientId=> ', this.patientId);
         this.getPatientInfoById();
       }
     });
@@ -36,7 +36,7 @@ export class PatientInfoComponent implements OnInit {
     const url = 'http://localhost:5015/Patient/PatientInfo?Id=' + this.patientId ;
     this.http.get(url).subscribe((data: PatientModel) => {
       this.patientInfo = data;
-      console.log('PatientId response:', data);
+      // console.log('PatientId response:', data);
     });
   }
 }

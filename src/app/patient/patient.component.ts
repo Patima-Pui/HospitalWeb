@@ -64,7 +64,7 @@ export class PatientComponent implements OnInit {
       this.ObjectTable = maindata;
       this.dataSource = new MatTableDataSource<PatientModel>(this.ObjectTable.patienttable);
       this.dataSource.paginator = this.paginator;
-      console.log('Patient Information from backend: ', this.ObjectTable);
+      // console.log('Patient Information from backend: ', this.ObjectTable);
 
     });
   }
@@ -73,7 +73,7 @@ export class PatientComponent implements OnInit {
     this.http.get('http://localhost:5015/Patient/DropdownType').subscribe((data: DropdownTypeModelList) => {
       if (data) {
         this.typeList = data.typeList;
-        console.log('Type from backend: ', this.typeList);
+        // console.log('Type from backend: ', this.typeList);
       }
     });
   }

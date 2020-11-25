@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './auth/auth.guard';
 import { CommingSoonComponent } from './comming-soon/comming-soon.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginLayoutComponent } from './layout/login-layout.component';
 import { MenuLayoutComponent } from './layout/menu-layout.component';
 import { LoginComponent } from './login/login.component';
+import { ManagelogComponent } from './managelog/managelog.component';
 import { MenuComponent } from './menu/menu.component';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { PatientComponent } from './patient/patient.component';
@@ -27,6 +29,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
+        path: 'dashboard',
+        component: DashboardComponent
+      },
+      {
         path: 'users',
         component: UsersComponent
       },
@@ -45,6 +51,10 @@ const routes: Routes = [
       {
         path: 'user-profile',
         component: UserProfileComponent
+      },
+      {
+        path: 'managelog',
+        component: ManagelogComponent
       }
     ]
   },

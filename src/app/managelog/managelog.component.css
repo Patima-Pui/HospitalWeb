@@ -1,0 +1,6 @@
+.account {
+    background-color: white;
+    height: calc(100vh - 120px);
+    padding: 10px 50px;
+    overflow: hidden;
+}

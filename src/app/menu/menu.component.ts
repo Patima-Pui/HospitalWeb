@@ -21,6 +21,10 @@ export class MenuComponent implements OnInit {
     this.isUsername = Global._USERNAME;
   }
 
+  routeToDashboard(): void {
+    this.router.navigate(['/dashboard']);
+  }
+
   routeToPatient(): void {
     this.router.navigate(['/patients']);
   }
@@ -31,6 +35,10 @@ export class MenuComponent implements OnInit {
 
   routeToCommingSoon(): void {
     this.router.navigate(['/commig-soon']);
+  }
+
+  routeToManageLog(): void {
+    this.router.navigate(['/managelog']);
   }
 
   clickLogout(): void {

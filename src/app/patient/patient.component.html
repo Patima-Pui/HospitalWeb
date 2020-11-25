@@ -1,26 +1,28 @@
 <div class="account">
     <h2> Patients List </h2>
     <div class="row">
-    <form [formGroup]="formGroup">
-        <mat-form-field appearance="outline" class="search-box">
-            <mat-icon class="icon" matSuffix>search</mat-icon>
-            <input matInput placeholder="Search..." formControlName="isSearch" (change)="getPatient()">
-        </mat-form-field>
+        <form class="search-form" [formGroup]="formGroup">
+            <mat-form-field appearance="outline" class="search-box">
+                <mat-icon class="icon" matSuffix>search</mat-icon>
+                <input matInput placeholder="Search..." formControlName="isSearch" (change)="getPatient()">
+            </mat-form-field>
 
-        <mat-form-field appearance="fill" class="type-box">
-            <mat-label> Type </mat-label>
-            <mat-select formControlName="isType" (selectionChange)="getPatient()">
-                <mat-option *ngFor="let item of typeList" [value]="item.id">
-                    {{item.name}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>    
-    </form>
-    <button class="btn-camera"><a href="https://www.google.com/" target="_blank"><mat-icon class="icon-camera">camera_alt</mat-icon></a></button>
-    <!-- <button class="btn-camera">
+            <mat-form-field appearance="fill" class="type-box">
+                <mat-label> Type </mat-label>
+                <mat-select formControlName="isType" (selectionChange)="getPatient()">
+                    <mat-option *ngFor="let item of typeList" [value]="item.id">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+        <button class="btn-camera"><a href="https://www.google.com/" target="_blank">
+                <mat-icon class="icon-camera">camera_alt</mat-icon>
+            </a></button>
+        <!-- <button class="btn-camera">
         <mat-icon class="icon-camera">camera_alt</mat-icon>
     </button> -->
-</div>
+    </div>
     <!-------------------------------------------------------------Start Table------------------------------------------------------------------->
     <table mat-table [dataSource]="dataSource">
 

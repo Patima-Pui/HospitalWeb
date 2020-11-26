@@ -2,5 +2,48 @@
     background-color: white;
     height: calc(100vh - 120px);
     padding: 10px 50px;
-    overflow: hidden;
+    /* overflow: hidden; */
+}
+
+.search-box{
+    width: 100%;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    /* justify-content:space-between;  */
+}
+.date {
+    width: 50%;
+    display: flex;
+    justify-content:space-between; 
+}
+/* .date mat-form-field{
+    margin-right: 20px;
+} */
+.btn-search {
+    background-color: #2e184b;
+    color: white;
+    height: 50px;
+    width: 100px;
+    margin-left: auto;
+}
+
+
+table {
+    width: 100%;
+}
+
+.th-header{
+    background-color: gray;
+    color: white;
+    text-align: center;
+}
+
+.td-contain {
+    text-align: center;
 }

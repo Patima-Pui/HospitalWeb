@@ -30,6 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagelogComponent } from './managelog/managelog.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -64,9 +66,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatDividerModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

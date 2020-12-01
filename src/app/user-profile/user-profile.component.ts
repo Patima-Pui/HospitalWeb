@@ -92,7 +92,7 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  clickEdit(): void {
+  clickSaveEdit(): void {
     const formbody = new RequestRegister({
       Id: this.userId,
       Username: this.formGroup.value.isUsername,

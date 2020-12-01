@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Global } from '../global/global';
 
@@ -45,4 +45,14 @@ export class MenuComponent implements OnInit {
     this.authService.logout();
   }
 
+  clickEditProfile(): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        UserId: Global._USERID,
+        Action: 'edit'
+      }
+    };
+    this.router.navigate(['/user-profile'], navigationExtras);
+
+  }
 }

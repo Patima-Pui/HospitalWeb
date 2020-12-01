@@ -15,7 +15,7 @@
             <!-- <div>User &nbsp;{{isUsername}}</div> -->
             <div class="txt-username">{{isUsername}}</div>
             <mat-divider></mat-divider>
-            <button class="btn-menu" mat-menu-item>
+            <button class="btn-menu" mat-menu-item (click)="clickEditProfile()"><!-- (click)="clickEditProfile(isUsername)" -->
                 <mat-icon>edit</mat-icon>
                 Edit Profile
             </button>

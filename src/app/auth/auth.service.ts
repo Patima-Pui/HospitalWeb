@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { RequestLogin, RequestRegister, ResponseModel } from '../Models/UserModel.model';
+import { Global } from '../global/global';
+import { RequestLogin, ResponseLoginModel} from '../Models/UserModel.model';
 
 @Injectable()
 export class AuthService {
@@ -27,10 +28,12 @@ export class AuthService {
 
         this.http.post('http://localhost:5015/User/Login', body).subscribe(
             // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
-            (response: ResponseModel) => {
+            (response: ResponseLoginModel) => {
 
                 if (response.success) {
                     // alert('LOGIN SUCCESS');
+                    // console.log(response.id);
+                    Global._USERID = response.id;
                     this.loggedIn.next(true);
                     this.router.navigate(['/patients']);
                 } else {

@@ -18,6 +18,14 @@ export class ResponseModel {
     }
 }
 
+export class ResponseLoginModel {
+    public success: boolean;
+    public id: number;
+    public constructor(init?: Partial<ResponseModel>) {
+        Object.assign(this, init);
+    }
+}
+
 export class RequestLogin {
     public Username: string;
     public Password: string;

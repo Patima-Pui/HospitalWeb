@@ -40,6 +40,15 @@ export class DashboardComponent implements OnInit {
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
         title: {
           text: 'Line Chart', // ข้อความที่อยู่ด้านบนของแผนภูมิ
           display: true
@@ -73,6 +82,14 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
         title: {
           text: 'Bar Chart', // ข้อความที่อยู่ด้านบนของแผนภูมิ
           display: true
@@ -99,6 +116,14 @@ export class DashboardComponent implements OnInit {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
         title: {
           text: 'Horizontal Bar Chart', // ข้อความที่อยู่ด้านบนของแผนภูมิ
           display: true

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
@@ -85,12 +85,23 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/user-profile'], navigationExtras);
   }
 
-  public clickDelete(id: number): void {
-    const url = 'http://localhost:5015/User/DeleteProfile/' + id;
-    this.http.delete(url).subscribe(response => {
-      console.log(response);
-      this.router.navigate(['/users']);
-    },
+  public clickDelete(userId: number): void {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: {
+        id: userId
+      }
+    };
+    const url = 'http://localhost:5015/User/DeleteProfile';
+    this.http.delete(url, options).subscribe(
+      (response: ResponseModel) => {
+        console.log(response);
+        if (response.success) {
+          this.getUser();
+        }
+      },
       error => {
         console.log(error);
       });

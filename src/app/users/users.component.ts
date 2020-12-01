@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
-import { UserModel, UserModelList } from '../Models/UserModel.model';
+import { ResponseModel, UserModel, UserModelList } from '../Models/UserModel.model';
 
 @Component({
   selector: 'app-users',
@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
   }
 
   public getUserAll(): void {
-    this.http.get('http://localhost:5015/User/UserAll').subscribe((userdata: UserModelList ) => {
+    this.http.get('http://localhost:5015/User/UserAll').subscribe((userdata: UserModelList) => {
       this.objectUserTable = userdata;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
@@ -83,5 +83,16 @@ export class UsersComponent implements OnInit {
       }
     };
     this.router.navigate(['/user-profile'], navigationExtras);
+  }
+
+  public clickDelete(id: number): void {
+    const url = 'http://localhost:5015/User/DeleteProfile/' + id;
+    this.http.delete(url).subscribe(response => {
+      console.log(response);
+      this.router.navigate(['/users']);
+    },
+      error => {
+        console.log(error);
+      });
   }
 }

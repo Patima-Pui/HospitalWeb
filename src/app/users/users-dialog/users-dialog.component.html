@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Delete {{data.username}}</h1>
+<h1 mat-dialog-title>Confirm Delete</h1>
 <div mat-dialog-content>
-  <div> Are you sure to delete? </div>
+  <div> Are you sure to delete {{data.username}}? </div>
   
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onDelete()">Ok</button>
-  <button mat-button (click)="onClickCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onDelete()">Delete</button>
+  <button mat-button color="warn" (click)="onClickCancel()">Cancel</button>
 </div>

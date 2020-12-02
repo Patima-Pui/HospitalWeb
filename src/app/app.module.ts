@@ -32,6 +32,8 @@ import { ManagelogComponent } from './managelog/managelog.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UsersDialogComponent } from './users/users-dialog/users-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     UserProfileComponent,
     PatientInfoComponent,
     DashboardComponent,
-    ManagelogComponent
+    ManagelogComponent,
+    UsersDialogComponent
   ],
   imports: [
     FormsModule,
@@ -68,7 +71,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatPaginatorModule,
     MatTabsModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatDialogModule
   ],
   providers: [AuthService, MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent]

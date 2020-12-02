@@ -1,10 +1,12 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
-import { ResponseModel, UserModel, UserModelList } from '../Models/UserModel.model';
+import { ResponseModel, UserDialogInfoModel, UserModel, UserModelList } from '../Models/UserModel.model';
+import { UsersDialogComponent } from './users-dialog/users-dialog.component';
 
 @Component({
   selector: 'app-users',
@@ -17,27 +19,25 @@ export class UsersComponent implements OnInit {
   public formGroupSearchUser: FormGroup;
 
   public displayedColumns: string[] = ['userId', 'username', 'name', 'surname', 'date', 'log', 'edit', 'delete'];
-  // public dataSource: UserModel[];
   public dataSource = new MatTableDataSource<UserModel>();
   public formGroup: FormGroup;
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    // this.getUserAll();
+    console.log('ngOnInit');
     this.initForm();
     this.getUser();
   }
-
 
   public initForm(): void {
     this.formGroup = new FormGroup({
       isSearch: new FormControl(''),
     });
-
   }
 
   public getUserAll(): void {
@@ -45,7 +45,6 @@ export class UsersComponent implements OnInit {
       this.objectUserTable = userdata;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
-      // console.log('User Information from backend: ', this.objectUserTable);
     });
   }
 
@@ -85,25 +84,18 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/user-profile'], navigationExtras);
   }
 
-  public clickDelete(userId: number): void {
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      }),
-      body: {
-        id: userId
+  public clickDelete(id: number, user: string): void {
+    const dialogRef = this.dialog.open(UsersDialogComponent, {
+      width: '500px',
+      data: new UserDialogInfoModel({ username: user, userId: id })
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.getUser();
       }
-    };
-    const url = 'http://localhost:5015/User/DeleteProfile';
-    this.http.delete(url, options).subscribe(
-      (response: ResponseModel) => {
-        console.log(response);
-        if (response.success) {
-          this.getUser();
-        }
-      },
-      error => {
-        console.log(error);
-      });
+    });
+
   }
 }

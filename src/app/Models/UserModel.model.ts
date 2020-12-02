@@ -63,7 +63,14 @@ export class UserProfileModel {
         Object.assign(this, init);
     }
 }
+export class UserDialogInfoModel {
+    public username: string;
+    public userId: number;
 
+    public constructor(init?: Partial<UserDialogInfoModel>) {
+        Object.assign(this, init);
+    }
+}
 export class DropdownDepartmentModel {
     public id: number;
     public name: string;

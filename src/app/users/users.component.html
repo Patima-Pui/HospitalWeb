@@ -1,8 +1,8 @@
 <div class="container">
-    <h2> Users List </h2>
     <div class="row">
         <form class="search-form" [formGroup]="formGroup">
             <mat-form-field appearance="outline" class="search-box" >
+                <mat-label> Search User </mat-label>
                 <mat-icon class="icon" matSuffix >search</mat-icon>
                 <input matInput placeholder="Search..." formControlName="isSearch" (change)="getUser()">
             </mat-form-field>
@@ -11,6 +11,8 @@
             <mat-icon>add</mat-icon>
          </button>
     </div>
+    
+    <h2> Users List </h2>
     <!-----------------------------------------------------------------Start Table ------------------------------------------------------------------->
     <table mat-table [dataSource]="dataSource">
         <!-- UserId Column -->

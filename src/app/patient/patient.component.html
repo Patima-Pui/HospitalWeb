@@ -1,8 +1,8 @@
 <div class="container">
-    <h2> Patients List </h2>
     <div class="row">
         <form class="search-form" [formGroup]="formGroup">
             <mat-form-field appearance="outline" class="search-box">
+                <mat-label> Search Patient </mat-label>
                 <mat-icon class="icon" matSuffix>search</mat-icon>
                 <input matInput placeholder="Search..." formControlName="isSearch" (change)="getPatient()">
             </mat-form-field>
@@ -23,6 +23,8 @@
         <mat-icon class="icon-camera">camera_alt</mat-icon>
     </button> -->
     </div>
+
+    <h2> Patients List </h2>
     <!-------------------------------------------------------------Start Table------------------------------------------------------------------->
     <table mat-table [dataSource]="dataSource">
 

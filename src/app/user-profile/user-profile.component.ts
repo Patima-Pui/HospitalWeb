@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Global } from '../global/global';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel, UserProfileModel } from '../Models/UserModel.model';
 
 @Component({
@@ -70,7 +71,8 @@ export class UserProfileComponent implements OnInit {
       Surname: this.formGroup.value.isSurname,
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
-      DepartmentId: Number(this.formGroup.value.isDepartmentId)
+      DepartmentId: Number(this.formGroup.value.isDepartmentId),
+      UpSertName: this.formGroup.value.isUsername
     });
 
     this.http.post('http://localhost:5015/User/Register', formbody).subscribe(
@@ -100,7 +102,8 @@ export class UserProfileComponent implements OnInit {
       Surname: this.formGroup.value.isSurname,
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
-      DepartmentId: Number(this.formGroup.value.isDepartmentId)
+      DepartmentId: Number(this.formGroup.value.isDepartmentId),
+      UpSertName: Global._USERNAME
     });
 
     this.http.put('http://localhost:5015/User/UpdateUserProfile', formbody).subscribe(
@@ -129,23 +132,24 @@ export class UserProfileComponent implements OnInit {
       Surname: this.formGroup.value.isSurname,
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
-      DepartmentId: Number(this.formGroup.value.isDepartmentId)
+      DepartmentId: Number(this.formGroup.value.isDepartmentId),
+      UpSertName: Global._USERNAME
     });
 
-    this.http.post('http://localhost:5015/User/Register', formbody).subscribe(
+    this.http.post('http://localhost:5015/User/AddUser', formbody).subscribe(
       // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
       (response: ResponseModel) => {
 
         if (response.success) {
-          alert('REGISTER SUCCESS');
+          alert('AddUser SUCCESS');
           this.router.navigate(['/users']);
         } else {
-          alert('REGISTER FAIL !');
+          alert('AddUser FAIL !');
         }
       },
       (error) => {
         console.log(error);
-        alert('REGISTER FAIL !!!');
+        alert('AddUser FAIL !!!');
       }
     );
   }

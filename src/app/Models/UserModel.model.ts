@@ -45,6 +45,7 @@ export class RequestRegister {
     public Telephone: string;
     public Email: string;
     public DepartmentId: number;
+    public UpSertName: string;
 
     public constructor(init?: Partial<RequestRegister>) {
         Object.assign(this, init);

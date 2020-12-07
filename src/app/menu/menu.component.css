@@ -55,7 +55,7 @@ mat-drawer {
 }
 
 /*will show gray background when click the nav-link */
-.nav-link:focus{ 
+.selected{ 
     color: white;
     background: grey;
     border: none;

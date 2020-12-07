@@ -11,6 +11,7 @@ import { Global } from '../global/global';
 export class MenuComponent implements OnInit {
 
   public isUsername = '';
+  public selectMenu = 'Patient'; // defult selectMenu
 
   constructor(
     private router: Router,
@@ -22,22 +23,27 @@ export class MenuComponent implements OnInit {
   }
 
   routeToDashboard(): void {
+    this.selectMenu = 'Dashboard';
     this.router.navigate(['/dashboard']);
   }
 
   routeToPatient(): void {
+    this.selectMenu = 'Patient';
     this.router.navigate(['/patients']);
   }
 
   routeToUser(): void {
+    this.selectMenu = 'User';
     this.router.navigate(['/users']);
   }
 
   routeToCommingSoon(): void {
+    this.selectMenu = 'RecFaces';
     this.router.navigate(['/commig-soon']);
   }
 
   routeToManageLog(): void {
+    this.selectMenu = 'Log';
     this.router.navigate(['/managelog']);
   }
 

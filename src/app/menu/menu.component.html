@@ -32,11 +32,11 @@
     <mat-drawer mode="side" opened>
 
         <ul class="nav-left-sidebar">
-            <li class="nav-link" (click)="routeToDashboard()">Dashboard</li>
-            <li class="nav-link" (click)="routeToPatient()">Patient Management</li>
-            <li class="nav-link" (click)="routeToCommingSoon()">RecFacesApplication</li>
-            <li class="nav-link" (click)="routeToUser()">User Management</li>
-            <li class="nav-link" (click)="routeToManageLog()">Log Management</li>
+            <li class="nav-link"  [ngClass]="{'selected':selectMenu == 'Dashboard'}" (click)="routeToDashboard()">Dashboard</li>
+            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'Patient'}" (click)="routeToPatient()">Patient Management</li>
+            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'RecFaces'}" (click)="routeToCommingSoon()">RecFacesApplication</li>
+            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'User'}" (click)="routeToUser()">User Management</li>
+            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'Log'}" (click)="routeToManageLog()">Log Management</li>
         </ul>
 
     </mat-drawer>

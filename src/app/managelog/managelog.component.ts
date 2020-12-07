@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { TestModel, TestModelList, UserModel, UserModelList } from '../Models/UserModel.model';
+import { LogModel, LogModelList } from '../Models/LogModel.model';
 
 @Component({
   selector: 'app-managelog',
@@ -13,9 +13,9 @@ export class ManagelogComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  public objectTable: UserModelList;
-  public displayedColumns: string[] = ['userId', 'username', 'name', 'surname', 'date'];
-  public dataSource = new MatTableDataSource<UserModel>();
+  public objectTable: LogModelList;
+  public displayedColumns: string[] = ['number', 'name', 'target', 'action',  'date'];
+  public dataSource = new MatTableDataSource<LogModel>();
   constructor(
     private http: HttpClient
   ) { }
@@ -25,10 +25,10 @@ export class ManagelogComponent implements OnInit {
   }
 
   public getData(): void {
-    this.http.get('http://localhost:5015/User/UserAll').subscribe((data: UserModelList) => {
+    this.http.get('http://localhost:5015/User/SelectLog').subscribe((data: LogModelList) => {
 
       this.objectTable = data;
-      this.dataSource = new MatTableDataSource<UserModel>(this.objectTable.usertable);
+      this.dataSource = new MatTableDataSource<LogModel>(this.objectTable.logtable);
       this.dataSource.paginator = this.paginator;
       console.log('Information from backend: ', this.objectTable);
 

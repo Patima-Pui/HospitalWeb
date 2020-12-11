@@ -24,6 +24,7 @@ export class UserProfileComponent implements OnInit {
   public departmentList: DropdownDepartmentModel[];
   public action: string; // register, add, edit
   public userId: number;
+  public duplicatePassword = true;
 
   constructor(
     private router: Router, // transmit
@@ -64,6 +65,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   clickRegister(): void {
+    if (!this.duplicatePassword) {
+      alert('Please check invalid data.');
+      return;
+    }
+
     const formbody = new RequestRegister({
       Username: this.formGroup.value.isUsername,
       Password: this.formGroup.value.isPassword,
@@ -190,5 +196,13 @@ export class UserProfileComponent implements OnInit {
     this.formGroup.controls.isTelephone.setValue(object.telephone);
     this.formGroup.controls.isEmail.setValue(object.email);
     this.formGroup.controls.isDepartmentId.setValue(object.departmentId);
+  }
+
+  checkDuplicatePassword(): void {
+    if (this.formGroup.value.isPassword !== this.formGroup.value.isRePassword) {
+      this.duplicatePassword = false;
+    } else {
+      this.duplicatePassword = true;
+    }
   }
 }

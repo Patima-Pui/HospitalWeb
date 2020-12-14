@@ -21,17 +21,10 @@ export class PatientComponent implements OnInit {
 
   // Create Column Table
   public displayedColumns: string[] = ['number', 'HN', 'name', 'surname', 'age', 'birthday', 'type', 'visit', 'account'];
-  // public dataSource: PatientModel[];
   public dataSource = new MatTableDataSource<PatientModel>();
 
   public formGroup: FormGroup;
   public typeList: DropdownTypeModel[];
-  /*= [
-    new DropdownTypeModel({ id: -1, name: 'All' }),
-    new DropdownTypeModel({ id: 0, name: 'Normal' }),
-    new DropdownTypeModel({ id: 1, name: 'VIP' }),
-    new DropdownTypeModel({ id: 2, name: 'Blacklist' })
-  ]*/
 
   constructor(
     private http: HttpClient,
@@ -64,7 +57,6 @@ export class PatientComponent implements OnInit {
       this.ObjectTable = maindata;
       this.dataSource = new MatTableDataSource<PatientModel>(this.ObjectTable.patienttable);
       this.dataSource.paginator = this.paginator;
-      // console.log('Patient Information from backend: ', this.ObjectTable);
 
     });
   }
@@ -72,8 +64,10 @@ export class PatientComponent implements OnInit {
   public getType(): void {
     this.http.get('http://localhost:5015/Patient/DropdownType').subscribe((data: DropdownTypeModelList) => {
       if (data) {
+        // fruits.splice(0, 0, "Lemon");
+        const defaultTypeALL = new DropdownTypeModel({ id: -1, name: 'ALL'});
         this.typeList = data.typeList;
-        // console.log('Type from backend: ', this.typeList);
+        this.typeList.splice(0, 0, defaultTypeALL);
       }
     });
   }

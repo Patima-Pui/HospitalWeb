@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Global } from '../global/global';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel, UserProfileModel } from '../Models/UserModel.model';
+import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-user-profile',
@@ -70,9 +71,11 @@ export class UserProfileComponent implements OnInit {
       return;
     }
 
+    const hashPassword = CryptoJS.SHA256(this.formGroup.value.isPassword);
+    const encryptPassword = hashPassword.toString(CryptoJS.enc.Base64);
     const formbody = new RequestRegister({
       Username: this.formGroup.value.isUsername,
-      Password: this.formGroup.value.isPassword,
+      Password: encryptPassword,
       Name: this.formGroup.value.isName,
       Surname: this.formGroup.value.isSurname,
       Telephone: this.formGroup.value.isTelephone,

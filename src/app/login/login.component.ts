@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Global } from '../global/global';
+import CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,9 @@ export class LoginComponent implements OnInit {
 
   clickLogin(): void{
     // create method login for receive input after click summit
-    this.authService.login(this.isUsername, this.isPassword);
+    const hashPassword = CryptoJS.SHA256(this.isPassword);
+    const encryptPassword = hashPassword.toString(CryptoJS.enc.Base64);
+    this.authService.login(this.isUsername, encryptPassword);
     Global._USERNAME = this.isUsername;
   }
 

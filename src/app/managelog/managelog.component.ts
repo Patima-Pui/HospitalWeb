@@ -25,7 +25,7 @@ export class ManagelogComponent implements OnInit {
   }
 
   public getData(): void {
-    this.http.get('http://localhost:5015/User/SelectLog').subscribe((data: LogModelList) => {
+    this.http.get('http://localhost:5015/Log/SelectLog').subscribe((data: LogModelList) => {
 
       this.objectTable = data;
       this.dataSource = new MatTableDataSource<LogModel>(this.objectTable.logtable);

@@ -34,6 +34,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { UsersDialogComponent } from './users/users-dialog/users-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patient-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     PatientInfoComponent,
     DashboardComponent,
     ManagelogComponent,
-    UsersDialogComponent
+    UsersDialogComponent,
+    PatientInfoDialogComponent
   ],
   imports: [
     FormsModule,

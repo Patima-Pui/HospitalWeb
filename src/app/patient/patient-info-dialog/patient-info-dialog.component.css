@@ -1,0 +1,38 @@
+
+.header {
+    background-color: #2e184b;
+    position: absolute;
+    padding: 55px 250px 55px 250px;
+}
+
+.image {
+    position: relative;
+    margin-top: 40px;
+}
+
+.size-image {
+    display: block;
+    width: 150px;
+    height: 150px;   
+    border-radius: 50%;
+    margin: auto;
+    border: solid 4px #2e184b;
+}
+
+.text-large {
+    font-size: large;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.text-normal {
+    font-size: medium;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+}

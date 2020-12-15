@@ -1,0 +1,28 @@
+<div class="header"></div>
+<div class="image">
+    <img src="../assets/Image/default-user.png" alt="default-user" class="size-image">
+</div>
+<div class="text-large">
+    {{patientInfo.name}}&nbsp;{{patientInfo.surname}}
+</div>
+<div class="text-normal">
+    HN : {{patientInfo.hn}}
+</div>
+<div class="text-normal">
+    Birthday : {{patientInfo.birthday | date: 'dd/MM/yyyy'}}
+</div>
+<div class="text-normal">
+    Age : {{patientInfo.age}}
+</div>
+<div class="text-normal">
+    Type : {{patientInfo.typeName}}
+</div>
+<div class="text-normal">
+    Frequency : {{patientInfo.visit}}
+</div>
+<div class="text-normal">
+    Appointment : {{patientInfo.appointment | date: 'dd/MM/yyyy'}}
+</div>
+<div class="text-normal">
+    Doctor : {{patientInfo.doctor}}
+</div>

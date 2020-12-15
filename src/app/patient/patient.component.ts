@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
+import { PatientInfoDialogComponent } from './patient-info-dialog/patient-info-dialog.component';
 
 @Component({
   selector: 'app-patient',
@@ -28,7 +30,8 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -73,11 +76,17 @@ export class PatientComponent implements OnInit {
   }
 
   public gotoPatientInfo(id: number): void {
-    const navigationExtras: NavigationExtras = {
-      queryParams: {
-        Hn: id,
-      }
-    };
-    this.router.navigate(['/patients/patient-info'], navigationExtras);
+    const dialogRef = this.dialog.open(PatientInfoDialogComponent, {
+      width: '500px',
+      data: id
+    });
+    dialogRef.afterClosed();
+
+    // const navigationExtras: NavigationExtras = {
+    //   queryParams: {
+    //     Hn: id,
+    //   }
+    // };
+    // this.router.navigate(['/patients/patient-info'], navigationExtras);
   }
 }

@@ -73,3 +73,9 @@ a {
     display: flex;
     justify-content:space-between; 
 }
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: white !important;
+    border: solid 1px lightgrey !important;
+    margin-top: 3px;
+    height: auto;
+}

@@ -30,14 +30,15 @@
                     </div>
                     <div class="row" *ngIf="action!=='edit'">
                         <label>Password</label>
-                        <input type="password" name="password" formControlName="isPassword"  (change)="checkDuplicatePassword()" autocomplete="off">
+                        <input type="password" name="password" formControlName="isPassword"
+                            (change)="checkDuplicatePassword()" autocomplete="off">
                     </div>
                     <div class="row" *ngIf="action!=='edit'">
                         <label>Re-Password</label>
                         <input type="password" name="re-password" (change)="checkDuplicatePassword()"
                             formControlName="isRePassword" autocomplete="false">
                     </div>
-                    <div *ngIf="!duplicatePassword" class="error-password" > Please make sure your passwords match </div>
+                    <div *ngIf="!duplicatePassword" class="error-password"> Please make sure your passwords match </div>
                     <div class="row">
                         <label>Name</label>
                         <input type="text" name="name" formControlName="isName" autocomplete="false">
@@ -54,11 +55,17 @@
                         <label>E-mail</label>
                         <input type="email" name="e-mail" formControlName="isEmail" autocomplete="false">
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         <label>Department</label>
                         <select name="departmentId" id="departmentId" formControlName="isDepartmentId">
                             <option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</option>
                         </select>
+                    </div> -->
+                    <div class="row">
+                        <label>Department</label>
+                        <mat-select name="departmentId" id="departmentId" formControlName="isDepartmentId">
+                            <mat-option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</mat-option>
+                        </mat-select>
                     </div>
                 </div>
 

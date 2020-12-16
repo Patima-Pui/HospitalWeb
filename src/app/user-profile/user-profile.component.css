@@ -96,13 +96,14 @@ body, html {
     font-weight: bold;
 }
 
-.input-login input,select {
+.input-login input,mat-select {
     flex: 2.5;
     display: block;
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid lightgray;
+    height: 40px;
 }
 
 .btn-row-register {

@@ -37,6 +37,11 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/users']);
   }
 
+  routeToRole(): void {
+    this.selectMenu = 'Role';
+    this.router.navigate(['/role']);
+  }
+
   routeToCommingSoon(): void {
     this.selectMenu = 'RecFaces';
     this.router.navigate(['/commig-soon']);

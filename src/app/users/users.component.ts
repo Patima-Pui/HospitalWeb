@@ -29,7 +29,6 @@ export class UsersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit');
     this.initForm();
     this.getUser();
   }

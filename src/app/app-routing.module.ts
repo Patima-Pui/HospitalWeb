@@ -11,16 +11,9 @@ import { ManagelogComponent } from './managelog/managelog.component';
 import { MenuComponent } from './menu/menu.component';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { PatientComponent } from './patient/patient.component';
+import { RoleComponent } from './role/role.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users/users.component';
-
-// const routes: Routes = [
-//   { path: 'login', component: LoginComponent },
-//   { path: 'account', component: AccountComponent },
-//   { path: 'menu', component: MenuComponent },
-//   { path: 'menu/patient', component: PatientComponent },
-//   { path: '', redirectTo: '/login', pathMatch: 'full' },
-// ];
 
 const routes: Routes = [
   {
@@ -55,6 +48,10 @@ const routes: Routes = [
       {
         path: 'managelog',
         component: ManagelogComponent
+      },
+      {
+        path: 'role',
+        component: RoleComponent
       }
     ]
   },

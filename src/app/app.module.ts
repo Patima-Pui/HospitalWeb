@@ -36,6 +36,7 @@ import { UsersDialogComponent } from './users/users-dialog/users-dialog.componen
 import { MatDialogModule } from '@angular/material/dialog';
 import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patient-info-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { RoleComponent } from './role/role.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     DashboardComponent,
     ManagelogComponent,
     UsersDialogComponent,
-    PatientInfoDialogComponent
+    PatientInfoDialogComponent,
+    RoleComponent
   ],
   imports: [
     FormsModule,

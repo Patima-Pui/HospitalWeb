@@ -37,6 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patient-info-dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { RoleComponent } from './role/role.component';
+import { RoleFormComponent } from './role-form/role-form.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,8 @@ import { RoleComponent } from './role/role.component';
     ManagelogComponent,
     UsersDialogComponent,
     PatientInfoDialogComponent,
-    RoleComponent
+    RoleComponent,
+    RoleFormComponent
   ],
   imports: [
     FormsModule,
@@ -77,7 +80,8 @@ import { RoleComponent } from './role/role.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSlideToggleModule
   ],
   providers: [AuthService, MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent]

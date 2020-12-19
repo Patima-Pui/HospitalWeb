@@ -4,7 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { RoleModel, RoleModelList } from '../Models/RoleModel.model';
 
 @Component({
@@ -51,9 +51,23 @@ export class RoleComponent implements OnInit {
   }
 
   addRole(): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        Action: 'add'
+      }
+    };
+    this.router.navigate(['/role-form'], navigationExtras);
   }
 
-  editRole(roleId: number): void {
+  editRole(roleId: number, role: string): void {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        RoleId: roleId,
+        RoleName: role,
+        Action: 'edit'
+      }
+    };
+    this.router.navigate(['/role-form'], navigationExtras);
   }
 
   deleteRole(roleId: number): void {

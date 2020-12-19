@@ -11,6 +11,7 @@ import { ManagelogComponent } from './managelog/managelog.component';
 import { MenuComponent } from './menu/menu.component';
 import { PatientInfoComponent } from './patient-info/patient-info.component';
 import { PatientComponent } from './patient/patient.component';
+import { RoleFormComponent } from './role-form/role-form.component';
 import { RoleComponent } from './role/role.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UsersComponent } from './users/users.component';
@@ -52,6 +53,10 @@ const routes: Routes = [
       {
         path: 'role',
         component: RoleComponent
+      },
+      {
+        path: 'role-form',
+        component: RoleFormComponent
       }
     ]
   },

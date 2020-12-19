@@ -30,14 +30,15 @@
                     </div>
                     <div class="row" *ngIf="action!=='edit'">
                         <label>Password</label>
-                        <input type="password" name="password" formControlName="isPassword"  (change)="checkDuplicatePassword()" autocomplete="off">
+                        <input type="password" name="password" formControlName="isPassword"
+                            (change)="checkDuplicatePassword()" autocomplete="off">
                     </div>
                     <div class="row" *ngIf="action!=='edit'">
                         <label>Re-Password</label>
                         <input type="password" name="re-password" (change)="checkDuplicatePassword()"
                             formControlName="isRePassword" autocomplete="false">
                     </div>
-                    <div *ngIf="!duplicatePassword" class="error-password" > Please make sure your passwords match </div>
+                    <div *ngIf="!duplicatePassword" class="error-password"> Please make sure your passwords match </div>
                     <div class="row">
                         <label>Name</label>
                         <input type="text" name="name" formControlName="isName" autocomplete="false">
@@ -71,7 +72,6 @@
                     <button type="submit" *ngIf="action=='add'" (click)="clickAdd()" class="btn-submit">Add</button>
                     <button type="submit" *ngIf="action=='edit'" (click)="clickSaveEdit()"
                         class="btn-submit">Save</button>
-
                     <button type="submit" *ngIf="action!='register'" (click)="clickCancel()"
                         class="btn-cancel">Cancel</button>
                 </div>

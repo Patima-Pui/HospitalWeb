@@ -76,7 +76,10 @@ body, html {
     border-radius: 5px;
     border: 1px solid lightgray;
 }
-
+mat-form-field{
+    width: 100%;
+   font-size: medium;
+}
 .btn-row {
     margin: 10px 0px ; /*Set margin top and bottom 10px and set margin left and right 0px*/
     display: flex;

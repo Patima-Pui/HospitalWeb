@@ -35,7 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { UsersDialogComponent } from './users/users-dialog/users-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patient-info-dialog.component';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +74,8 @@ import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patien
     MatTabsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule
   ],
   providers: [AuthService, MatDatepickerModule, AuthGuard],
   bootstrap: [AppComponent]

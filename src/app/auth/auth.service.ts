@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Global } from '../global/global';
 import { RequestLogin, ResponseLoginModel} from '../Models/UserModel.model';
 
@@ -26,7 +27,7 @@ export class AuthService {
             Password: password
         });
 
-        this.http.post('http://localhost:5015/User/Login', body).subscribe(
+        this.http.post(environment.apiUrl + '/User/Login', body).subscribe(
             // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
             (response: ResponseLoginModel) => {
 

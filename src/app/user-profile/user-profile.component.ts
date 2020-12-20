@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Global } from '../global/global';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel, UserProfileModel } from '../Models/UserModel.model';
 import CryptoJS from 'crypto-js';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-user-profile',
@@ -84,7 +85,7 @@ export class UserProfileComponent implements OnInit {
       UpSertName: this.formGroup.value.isUsername
     });
 
-    this.http.post('http://localhost:5015/User/Register', formbody).subscribe(
+    this.http.post(environment.apiUrl + '/User/Register', formbody).subscribe(
       // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
       (response: ResponseModel) => {
 
@@ -115,7 +116,7 @@ export class UserProfileComponent implements OnInit {
       UpSertName: Global._USERNAME
     });
 
-    this.http.put('http://localhost:5015/User/UpdateUserProfile', formbody).subscribe(
+    this.http.put(environment.apiUrl + '/User/UpdateUserProfile', formbody).subscribe(
       // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
       (response: ResponseModel) => {
 
@@ -145,7 +146,7 @@ export class UserProfileComponent implements OnInit {
       UpSertName: Global._USERNAME
     });
 
-    this.http.post('http://localhost:5015/User/AddUser', formbody).subscribe(
+    this.http.post(environment.apiUrl + '/User/AddUser', formbody).subscribe(
       // เมื่อAPI Response กลับมาแล้วจะทำงานภายใต้ปีกกกา
       (response: ResponseModel) => {
 
@@ -172,7 +173,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getDepartmentList(): void {
-    this.http.get('http://localhost:5015/User/DropdownDepartment').subscribe((data: DropdownDepartmentModelList) => {
+    this.http.get(environment.apiUrl + '/User/DropdownDepartment').subscribe((data: DropdownDepartmentModelList) => {
       if (data) {
         this.departmentList = data.departmentList;
       }
@@ -184,7 +185,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUserInfoById(id: number): void {
-    const url = 'http://localhost:5015/User/UserInfo?Id=' + id;
+    const url = environment.apiUrl + '/User/UserInfo?Id=' + id;
     this.http.get(url).subscribe((data: UserProfileModel) => {
       if (data) {
         this.setUserInfoToForm(data);

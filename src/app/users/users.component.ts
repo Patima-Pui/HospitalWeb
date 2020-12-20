@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { ResponseModel, UserDialogInfoModel, UserModel, UserModelList } from '../Models/UserModel.model';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
 
@@ -40,7 +41,7 @@ export class UsersComponent implements OnInit {
   }
 
   public getUserAll(): void {
-    this.http.get('http://localhost:5015/User/UserAll').subscribe((userdata: UserModelList) => {
+    this.http.get(environment.apiUrl + '/User/UserAll').subscribe((userdata: UserModelList) => {
       this.objectUserTable = userdata;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
@@ -49,7 +50,7 @@ export class UsersComponent implements OnInit {
 
   public getUser(): void {
     const searchTxt = this.formGroup.value.isSearch;
-    const url = 'http://localhost:5015/User/QueryUser?SearchText=' + searchTxt;
+    const url = environment.apiUrl + '/User/QueryUser?SearchText=' + searchTxt;
     this.http.get(url).subscribe((queryuser: UserModelList) => {
       this.objectUserTable = queryuser;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);

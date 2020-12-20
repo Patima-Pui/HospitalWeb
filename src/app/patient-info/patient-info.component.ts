@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { PatientModel } from '../Models/PatientModel.model';
 
 @Component({
@@ -33,7 +34,7 @@ export class PatientInfoComponent implements OnInit {
   }
 
   getPatientInfoById(): void {
-    const url = 'http://localhost:5015/Patient/PatientInfo?Id=' + this.patientId ;
+    const url = environment.apiUrl + '/Patient/PatientInfo?Id=' + this.patientId ;
     this.http.get(url).subscribe((data: PatientModel) => {
       this.patientInfo = data;
       // console.log('PatientId response:', data);

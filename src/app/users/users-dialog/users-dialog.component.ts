@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Global } from 'src/app/global/global';
 import { ResponseModel, UserDialogInfoModel } from 'src/app/Models/UserModel.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-users-dialog',
@@ -32,7 +33,7 @@ export class UsersDialogComponent {
         deleteName: Global._USERNAME
       }
     };
-    const url = 'http://localhost:5015/User/DeleteProfile';
+    const url = environment.apiUrl + '/User/DeleteProfile';
     this.http.delete(url, options).subscribe(
       (response: ResponseModel) => {
         console.log(response);

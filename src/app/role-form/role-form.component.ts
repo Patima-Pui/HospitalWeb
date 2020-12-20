@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { PermissionModel, PermissionModelList } from '../Models/RoleModel.model';
 
 @Component({
@@ -43,13 +44,17 @@ export class RoleFormComponent implements OnInit {
   }
 
   getPermissionAll(): void {
-    this.http.get('http://localhost:5015/Roles/PermissionAll').subscribe((permissionList: PermissionModelList) => {
+    this.http.get(environment.apiUrl + '/Roles/PermissionAll').subscribe((permissionList: PermissionModelList) => {
       this.dataSource = new MatTableDataSource<PermissionModel>(permissionList.permissiontable);
       this.dataSource.paginator = this.paginator;
     });
   }
 
   getPermissionByRoleId(roleId: number): void {
+  }
+
+  save(){
+    console.log(this.dataSource);
   }
 
 }

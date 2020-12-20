@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
 import { PatientInfoDialogComponent } from './patient-info-dialog/patient-info-dialog.component';
 
@@ -54,7 +55,7 @@ export class PatientComponent implements OnInit {
   public getPatient(): void {
     const searchTxt = this.formGroup.value.isSearch;
     const typeId = this.formGroup.value.isType;
-    const url = 'http://localhost:5015/Patient/QueryPatient?SearchText=' + searchTxt + '&TypeId=' + typeId;
+    const url = environment.apiUrl +  '/Patient/QueryPatient?SearchText=' + searchTxt + '&TypeId=' + typeId;
     this.http.get(url).subscribe((maindata: PatientModelList) => {
 
       this.ObjectTable = maindata;
@@ -65,7 +66,7 @@ export class PatientComponent implements OnInit {
   }
 
   public getType(): void {
-    this.http.get('http://localhost:5015/Patient/DropdownType').subscribe((data: DropdownTypeModelList) => {
+    this.http.get(environment.apiUrl + '/Patient/DropdownType').subscribe((data: DropdownTypeModelList) => {
       if (data) {
         // fruits.splice(0, 0, "Lemon");
         const defaultTypeALL = new DropdownTypeModel({ id: -1, name: 'ALL'});

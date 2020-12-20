@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { RoleModel, RoleModelList } from '../Models/RoleModel.model';
 
 @Component({
@@ -39,7 +40,7 @@ export class RoleComponent implements OnInit {
   }
 
   getRole(): void {
-    this.http.get('http://localhost:5015/Roles/RolesAll').subscribe((roledata: RoleModelList) => {
+    this.http.get(environment.apiUrl + '/Roles/RolesAll').subscribe((roledata: RoleModelList) => {
       console.log('Role : ', roledata);
       this.roleList = roledata.roletable;
       this.dataSource = new MatTableDataSource<RoleModel>(this.roleList);

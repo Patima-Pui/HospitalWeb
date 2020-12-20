@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { PatientModel } from 'src/app/Models/PatientModel.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-patient-info-dialog',
@@ -26,7 +27,7 @@ export class PatientInfoDialogComponent implements OnInit {
   }
 
   getPatientInfoById(): void {
-    const url = 'http://localhost:5015/Patient/PatientInfo?Id=' + this.data ;
+    const url = environment.apiUrl + '/Patient/PatientInfo?Id=' + this.data ;
     this.http.get(url).subscribe((data: PatientModel) => {
       this.patientInfo = data;
       console.log('PatientId response:', data);

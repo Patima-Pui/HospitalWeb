@@ -1,3 +1,8 @@
+.container {
+    background-color: white;
+    height: calc(100vh - 120px);
+    padding: 10px 50px;
+}
 
 table {
     width: 100%;
@@ -23,4 +28,28 @@ th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:
 
 .row {
     display: flex;
+}
+
+.btn-row {
+    margin: 10px 0px;
+    float: right;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+}
+
+.btn-submit {
+    width: 140px;
+    background:#2e184b;
+    color: white;
+    border:solid 1px #2e184b;
+}
+
+.btn-cancel {
+    width: 140px;
+    background: white;
+    color:#2e184b;
+    border:solid 1px #2e184b;
 }

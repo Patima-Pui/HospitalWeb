@@ -2,10 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { PermissionModel, PermissionModelList } from '../Models/RoleModel.model';
-
+import { Global } from '../global/global';
+import { PermissionByIdModelList, PermissionModel, PermissionModelList, UpsertRoleModel } from '../Models/RoleModel.model';
+import { ResponseModel } from '../Models/UserModel.model';
 @Component({
   selector: 'app-role-form',
   templateUrl: './role-form.component.html',
@@ -22,6 +23,7 @@ export class RoleFormComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
+    private router: Router,
     private route: ActivatedRoute
   ) { }
 
@@ -51,10 +53,60 @@ export class RoleFormComponent implements OnInit {
   }
 
   getPermissionByRoleId(roleId: number): void {
+    this.http.get(environment.apiUrl + '/Roles/PermissionById?roleId=' + roleId).subscribe((permissionList: PermissionByIdModelList) => {
+      this.dataSource = new MatTableDataSource<PermissionModel>(permissionList.permissionIdList);
+      this.dataSource.paginator = this.paginator;
+    });
   }
 
-  save(){
-    console.log(this.dataSource);
+  clickSaveAdd(): void {
+    console.log(this.dataSource.data);
+    const formbody = new UpsertRoleModel({
+      roleName: this.isRoleName,
+      username: Global._USERNAME,
+      permissionList: this.dataSource.data
+    });
+    this.http.post(environment.apiUrl + '/Roles/InsertRole', formbody).subscribe(
+      (response: ResponseModel) => {
+        if (response.success) {
+          alert('SUCCESS');
+          this.router.navigate(['/role']);
+        } else {
+          alert('FAIL');
+        }
+      },
+      (error) => {
+        console.log(error);
+        alert('FAIL');
+      }
+    );
+  }
+
+  clickSaveEdit(): void {
+    alert('clickSaveEdit');
+    // const formbody = new RequestRegister({
+    //   Username: this.formGroup.value.isUsername,
+    //   Password: this.formGroup.value.isPassword,
+    //   Name: this.formGroup.value.isName,
+    // });
+    // this.http.put('#', formbody).subscribe(
+    //   (response: ResponseModel) => {
+    //     if (response.success) {
+    //       alert('UPDATE SUCCESS');
+    //       this.router.navigate(['/roles']);
+    //     } else {
+    //       alert('UPDATE FAIL !');
+    //     }
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //     alert('UPDATE FAIL !!!');
+    //   }
+    // );
+  }
+
+  clickCancel(): void {
+    this.router.navigate(['/role']);
   }
 
 }

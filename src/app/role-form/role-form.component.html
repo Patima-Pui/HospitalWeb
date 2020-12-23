@@ -1,36 +1,39 @@
-<div>
-    <label>Role Name: </label>
-    <mat-form-field appearance="standard">
-        <input [(ngModel)]="isRoleName" matInput placeholder="Enter RoleName" [disabled]="action=='edit'">
-    </mat-form-field>
+<div class="container">
+    <div>
+        <label>Role Name: </label>
+        <mat-form-field appearance="standard">
+            <input [(ngModel)]="isRoleName" matInput placeholder="Enter RoleName" [disabled]="action=='edit'">
+        </mat-form-field>
+    </div>
+
+    <table mat-table [dataSource]="dataSource">
+        <!-- No Column -->
+        <ng-container matColumnDef="permissionId">
+            <th mat-header-cell *matHeaderCellDef class="th-header"> No </th>
+            <td mat-cell *matCellDef="let element; let i=index" class="td-contain"> {{element.permissionId}} </td>
+        </ng-container>
+
+        <!-- Permission Column -->
+        <ng-container matColumnDef="permissionName">
+            <th mat-header-cell *matHeaderCellDef class="th-header"> Permission </th>
+            <td mat-cell *matCellDef="let element" class="td-contain"> {{element.permissionName}} </td>
+        </ng-container>
+
+        <!-- Enable Column -->
+        <ng-container matColumnDef="permissionEnable">
+            <th mat-header-cell *matHeaderCellDef class="th-header"> Enable </th>
+            <td mat-cell *matCellDef="let element" class="td-contain">
+                <mat-slide-toggle [(ngModel)]="element.permissionCheck"></mat-slide-toggle>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[15]" showFirstLastButtons></mat-paginator>
+    <div class="btn-row">
+        <button type="submit" (click)="clickCancel()" class="btn-cancel">Cancel</button>
+        <button type="submit" *ngIf="action=='add'" (click)="clickSaveAdd()" class="btn-submit">Save</button>
+        <button type="submit" *ngIf="action=='edit'" (click)="clickSaveEdit()" class="btn-submit">Save</button>
+    </div>
 </div>
-
-<table mat-table [dataSource]="dataSource">
-    <!-- No Column -->
-    <ng-container matColumnDef="permissionId">
-        <th mat-header-cell *matHeaderCellDef class="th-header"> No </th>
-        <td mat-cell *matCellDef="let element; let i=index" class="td-contain"> {{element.permissionId}} </td>
-    </ng-container>
-
-    <!-- Permission Column -->
-    <ng-container matColumnDef="permissionName">
-        <th mat-header-cell *matHeaderCellDef class="th-header"> Permission </th>
-        <td mat-cell *matCellDef="let element" class="td-contain"> {{element.permissionName}} </td>
-    </ng-container>
-
-    <!-- Enable Column -->
-    <ng-container matColumnDef="permissionEnable">
-        <th mat-header-cell *matHeaderCellDef class="th-header"> Enable </th>
-        <td mat-cell *matCellDef="let element" class="td-contain">
-            <mat-slide-toggle [(ngModel)]="element.permissionCheck"></mat-slide-toggle>
-        </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-<mat-paginator [pageSizeOptions]="[15]" showFirstLastButtons></mat-paginator>
-
-<!-- SAVE *ngIf+"action=='Add' (click)=""-->
-<!-- SAVE *ngIf+"action=='Edit'-->
-<button (click)="save()">save</button>

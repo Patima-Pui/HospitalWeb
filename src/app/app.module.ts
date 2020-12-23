@@ -39,6 +39,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { RoleComponent } from './role/role.component';
 import { RoleFormComponent } from './role-form/role-form.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { DeleteRoleDialogComponent } from './role/delete-role-dialog/delete-role-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     UsersDialogComponent,
     PatientInfoDialogComponent,
     RoleComponent,
-    RoleFormComponent
+    RoleFormComponent,
+    DeleteRoleDialogComponent
   ],
   imports: [
     FormsModule,

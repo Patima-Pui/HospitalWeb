@@ -1,6 +1,10 @@
 export class RoleModel {
     public id: number;
     public role: string;
+
+    public constructor(init?: Partial<RoleModel>) {
+        Object.assign(this, init);
+    }
 }
 
 export class RoleModelList {

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { RoleModel, RoleModelList } from '../Models/RoleModel.model';
+import { DeleteRoleDialogComponent } from './delete-role-dialog/delete-role-dialog.component';
 
 @Component({
   selector: 'app-role',
@@ -71,7 +72,18 @@ export class RoleComponent implements OnInit {
     this.router.navigate(['/role-form'], navigationExtras);
   }
 
-  deleteRole(roleId: number): void {
+  deleteRole(roleId: number, roleName: string): void {
+    const dialogRef = this.dialog.open(DeleteRoleDialogComponent, {
+      width: '500px',
+      data: new RoleModel({ role: roleName, id: roleId })
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.getRole();
+      }
+    });
+
   }
 
 }

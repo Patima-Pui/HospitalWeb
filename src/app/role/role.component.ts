@@ -74,7 +74,8 @@ export class RoleComponent implements OnInit {
 
   deleteRole(roleId: number, roleName: string): void {
     const dialogRef = this.dialog.open(DeleteRoleDialogComponent, {
-      width: '500px',
+      width: '400px',
+      height: '250px',
       data: new RoleModel({ role: roleName, id: roleId })
     });
 

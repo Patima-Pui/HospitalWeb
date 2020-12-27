@@ -1,0 +1,27 @@
+.btn-cancel {
+    width: 140px;
+    background:white;
+    color: gray;
+}
+
+.btn-del {
+    width: 140px;
+    background:red;
+    color: white;
+}
+
+::ng-deep .mat-dialog-actions{
+    justify-content: center;
+}
+
+.text {
+    padding-left: 20px;
+}
+
+.icon:hover {
+    display: flex;
+}
+
+.delete {
+    color:FireBrick;
+}

@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Global } from '../global/global';
-import { PermissionByIdModelList, PermissionModel, PermissionModelList, UpsertRoleModel } from '../Models/RoleModel.model';
+import { InsertRoleModel, PermissionByIdModelList, PermissionModel, PermissionModelList, UpdateRoleModel } from '../Models/RoleModel.model';
 import { ResponseModel } from '../Models/UserModel.model';
 @Component({
   selector: 'app-role-form',
@@ -61,7 +61,7 @@ export class RoleFormComponent implements OnInit {
 
   clickSaveAdd(): void {
     console.log(this.dataSource.data);
-    const formbody = new UpsertRoleModel({
+    const formbody = new InsertRoleModel({
       roleName: this.isRoleName,
       username: Global._USERNAME,
       permissionList: this.dataSource.data
@@ -83,26 +83,25 @@ export class RoleFormComponent implements OnInit {
   }
 
   clickSaveEdit(): void {
-    alert('clickSaveEdit');
-    // const formbody = new RequestRegister({
-    //   Username: this.formGroup.value.isUsername,
-    //   Password: this.formGroup.value.isPassword,
-    //   Name: this.formGroup.value.isName,
-    // });
-    // this.http.put('#', formbody).subscribe(
-    //   (response: ResponseModel) => {
-    //     if (response.success) {
-    //       alert('UPDATE SUCCESS');
-    //       this.router.navigate(['/roles']);
-    //     } else {
-    //       alert('UPDATE FAIL !');
-    //     }
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //     alert('UPDATE FAIL !!!');
-    //   }
-    // );
+    const formbody = new UpdateRoleModel({
+      roleId: this.roldId,
+      username: Global._USERNAME,
+      permissionList: this.dataSource.data
+    });
+    this.http.put(environment.apiUrl + '/Roles/UpdateRole', formbody).subscribe(
+      (response: ResponseModel) => {
+        if (response.success) {
+          alert('UPDATE SUCCESS');
+          this.router.navigate(['/role']);
+        } else {
+          alert('UPDATE FAIL !');
+        }
+      },
+      (error) => {
+        console.log(error);
+        alert('UPDATE FAIL !!!');
+      }
+    );
   }
 
   clickCancel(): void {

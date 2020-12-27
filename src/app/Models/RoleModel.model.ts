@@ -24,12 +24,28 @@ export class PermissionByIdModelList {
     public permissionIdList: PermissionModel[];
 }
 
-export class UpsertRoleModel {
-    public roleName: string;
+export class RequestRoleModel {
     public username: string;
     public permissionList: PermissionModel[];
 
-    public constructor(init?: Partial<UpsertRoleModel>) {
+    public constructor(init?: Partial<RequestRoleModel>) {
         Object.assign(this, init);
+    }
+}
+export class InsertRoleModel extends RequestRoleModel
+{
+    public roleName: string;
+
+    public constructor(init?: Partial<InsertRoleModel>) {
+        super(init);
+    }
+}
+
+export class UpdateRoleModel extends RequestRoleModel
+{
+    public roleId: number;
+
+    public constructor(init?: Partial<UpdateRoleModel>) {
+        super(init);
     }
 }

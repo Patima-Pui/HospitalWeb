@@ -21,12 +21,11 @@
 
         <div class="wrap-form">
             <form [formGroup]="formGroup" autocomplete="off">
-                <div class="input-login">
+                <!-- <div class="input-login">
                     <div class="row">
                         <label>Username</label>
                         <input type="text" name="username" formControlName="isUsername" autocomplete="off"
                             [attr.disabled]="action=='edit' ? '' : null">
-                        <!-- placeholder="Enter Username"  -->
                     </div>
                     <div class="row" *ngIf="action!=='edit'">
                         <label>Password</label>
@@ -61,7 +60,47 @@
                             <mat-option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</mat-option>
                         </mat-select>
                     </div>
-                </div>
+                </div> -->
+
+                <mat-form-field appearance="standard">
+                    <mat-label>Username</mat-label>
+                    <input type="text" name="username" formControlName="isUsername" autocomplete="off"
+                        [attr.disabled]="action=='edit' ? '' : null" matInput placeholder="Username">
+                </mat-form-field>
+                <mat-form-field appearance="standard" *ngIf="action!=='edit'">
+                    <mat-label>Password</mat-label>
+                    <input type="password" name="password" formControlName="isPassword"
+                        (change)="checkDuplicatePassword()" matInput placeholder="Password">
+                </mat-form-field>
+                <mat-form-field appearance="standard" *ngIf="action!=='edit'">
+                    <mat-label>Re-Password</mat-label>
+                    <input type="password" name="re-password" (change)="checkDuplicatePassword()"
+                        formControlName="isRePassword" matInput placeholder="Re-Password">
+                    <mat-hint *ngIf="!duplicatePassword" class="error-password">Please make sure your passwords match
+                    </mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Name</mat-label>
+                    <input type="text" name="name" formControlName="isName" matInput placeholder="Name">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Surname</mat-label>
+                    <input type="text" name="surname" formControlName="isSurname" matInput placeholder="Surname">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Telephone</mat-label>
+                    <input type="tel" name="telephone" formControlName="isTelephone" matInput placeholder="Telephone">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>E-mail</mat-label>
+                    <input type="email" name="e-mail" formControlName="isEmail" matInput placeholder="E-mail">
+                </mat-form-field>
+                <mat-form-field appearance="standard">
+                    <mat-label>Department</mat-label>
+                    <mat-select name="departmentId" id="departmentId" formControlName="isDepartmentId">
+                        <mat-option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <div [ngClass]="{'btn-row-register':checkAction(), 'btn-row':!checkAction()}">
                     <button type="submit" *ngIf="action=='register'" (click)="clickRegister()"

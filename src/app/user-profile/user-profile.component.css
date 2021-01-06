@@ -84,6 +84,10 @@ body, html {
     padding: 10px;
 }
 
+mat-form-field,mat-select{
+    width: 100%;
+}
+
 .row {
     display: flex;
     margin: 10px 0px ;
@@ -95,7 +99,7 @@ body, html {
     padding: 5px 0px;
     font-weight: bold;
 }
-
+/* 
 .input-login input,mat-select {
     flex: 2.5;
     display: block;
@@ -104,7 +108,7 @@ body, html {
     border-radius: 5px;
     border: 1px solid lightgray;
     height: 40px;
-}
+} */
 
 .btn-row-register {
     margin: 20px 0px 0px 0px;
@@ -138,8 +142,7 @@ button {
 
 .error-password {
     color: red;
-    font-size: 8px;
-    margin-left: 95px;
+    font-size: 10px;
 }
 
 .mat-option-text{

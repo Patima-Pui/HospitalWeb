@@ -15,7 +15,8 @@
             <!-- <div>User &nbsp;{{isUsername}}</div> -->
             <div class="txt-username">{{isUsername}}</div>
             <mat-divider></mat-divider>
-            <button class="btn-menu" mat-menu-item (click)="clickEditProfile()"><!-- (click)="clickEditProfile(isUsername)" -->
+            <button class="btn-menu" mat-menu-item (click)="clickEditProfile()">
+                <!-- (click)="clickEditProfile(isUsername)" -->
                 <mat-icon>edit</mat-icon>
                 Edit Profile
             </button>
@@ -30,14 +31,26 @@
 
 <mat-drawer-container class="container">
     <mat-drawer mode="side" opened>
-
         <ul class="nav-left-sidebar">
-            <li class="nav-link"  [ngClass]="{'selected':selectMenu == 'Dashboard'}" (click)="routeToDashboard()">Dashboard</li>
-            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'Patient'}" (click)="routeToPatient()">Patient Management</li>
-            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'RecFaces'}" (click)="routeToCommingSoon()">RecFacesApplication</li>
-            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'User'}" (click)="routeToUser()">User Management</li>
-            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'Role'}" (click)="routeToRole()">Role Management</li>
-            <li class="nav-link" [ngClass]="{'selected':selectMenu == 'Log'}" (click)="routeToManageLog()">Log Management</li>
+            <li *ngIf="checkPermission('ViewMenuDashboard')" [ngClass]="{'selected':selectMenu == 'Dashboard'}"
+                class="nav-link" (click)="routeToDashboard()"> Dashboard </li>
+
+            <li *ngIf="checkPermission('ViewMenuPartient')" [ngClass]="{'selected':selectMenu == 'Patient'}"
+                class="nav-link" (click)="routeToPatient()">Patient Management
+            </li>
+
+            <li *ngIf="checkPermission('ViewMenuRecFace')" [ngClass]="{'selected':selectMenu == 'RecFaces'}"
+                class="nav-link" (click)="routeToCommingSoon()">RecFacesApplication</li>
+
+            <li *ngIf="checkPermission('ViewMenuUser')" [ngClass]="{'selected':selectMenu == 'User'}" class="nav-link"
+                (click)="routeToUser()">User Management</li>
+
+            <li *ngIf="checkPermission('ViewMenuRole')" [ngClass]="{'selected':selectMenu == 'Role'}" class="nav-link"
+                (click)="routeToRole()">Role Management</li>
+
+            <li *ngIf="checkPermission('ViewMenuLog')" [ngClass]="{'selected':selectMenu == 'Log'}" class="nav-link"
+                (click)="routeToManageLog()">Log Management</li>
+
         </ul>
 
     </mat-drawer>

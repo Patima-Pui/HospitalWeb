@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
+import { PermissionModel } from '../Models/RoleModel.model';
 import { PatientInfoDialogComponent } from './patient-info-dialog/patient-info-dialog.component';
 
 @Component({
@@ -29,6 +30,8 @@ export class PatientComponent implements OnInit {
   public formGroup: FormGroup;
   public typeList: DropdownTypeModel[];
 
+  public permissions: PermissionModel[];
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -39,9 +42,9 @@ export class PatientComponent implements OnInit {
     // default data
     this.initForm();
     this.formGroup.controls.isType.setValue(-1);
-
     this.getPatient();
     this.getType();
+    this.permissions = JSON.parse(localStorage.getItem('permissions'));
   }
 
   public initForm(): void {
@@ -89,5 +92,19 @@ export class PatientComponent implements OnInit {
     //   }
     // };
     // this.router.navigate(['/patients/patient-info'], navigationExtras);
+  }
+
+  checkPermission(eventPermission: string): boolean {
+    let result = false;
+    if (this.permissions.length > 0) {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.permissions.length; i++) {
+        if (this.permissions[i].permissionName === eventPermission) {
+          result = this.permissions[i].permissionCheck;
+          break;
+        }
+      }
+    }
+    return result;
   }
 }

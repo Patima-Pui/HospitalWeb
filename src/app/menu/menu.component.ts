@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import { Global } from '../global/global';
+import { PermissionByUserIdModelList, PermissionModel } from '../Models/RoleModel.model';
 
 @Component({
   selector: 'app-menu',
@@ -12,14 +15,58 @@ export class MenuComponent implements OnInit {
 
   public isUsername = '';
   public selectMenu = 'Patient'; // defult selectMenu
+  public permissions: PermissionModel[] = [];
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
     this.isUsername = Global._USERNAME;
+    this.getPermissions();
+  }
+
+  // checkPermission(permissionEvent: string): boolean {
+  //   if (this.permissions.length > 0) {
+  //     this.permissions.forEach((item: PermissionModel) => {
+  //       if (item.permissionName === permissionEvent) {
+  //         console.log(item.permissionName, ' CheckPermission ', item.permissionCheck);
+  //         return item.permissionCheck;
+  //       }
+  //       console.log('not in condition');
+  //     });
+  //   }
+  //   else {
+  //     console.log('CheckPermissionFalse');
+  //     return false;
+  //   }
+  // }
+
+  getPermissions(): void {
+    this.http.get(environment.apiUrl + '/Roles/PermissionByUserId?Id=' + Global._USERID).subscribe(
+      (response: PermissionByUserIdModelList) => {
+        localStorage.setItem('roleName', response.role);
+        localStorage.setItem('permissions', JSON.stringify(response.permissions));
+        this.permissions = response.permissions;
+        console.log(this.permissions);
+      }
+    );
+  }
+
+  checkPermission(eventPermission: string): boolean {
+    let result = false;
+    if (this.permissions.length > 0) {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.permissions.length; i++) {
+        if (this.permissions[i].permissionName === eventPermission) {
+          result = this.permissions[i].permissionCheck;
+          break;
+        }
+      }
+    }
+    return result;
   }
 
   routeToDashboard(): void {

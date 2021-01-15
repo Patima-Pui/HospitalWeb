@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Global } from '../global/global';
+import { PermissionByUserIdModelList } from '../Models/RoleModel.model';
 import { RequestLogin, ResponseLoginModel} from '../Models/UserModel.model';
 
 @Injectable()
@@ -53,5 +54,4 @@ export class AuthService {
         this.loggedIn.next(false);
         this.router.navigate(['/login']);
     }
-
 }

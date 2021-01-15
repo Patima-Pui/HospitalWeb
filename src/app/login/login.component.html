@@ -19,18 +19,18 @@
                     </div> -->
                     <mat-form-field appearance="standard">
                         <mat-label>Username</mat-label>
-                        <input type="text" name="username" [(ngModel)]="isUsername" matInput placeholder="Enter Username">
+                        <input type="text" name="username" [(ngModel)]="isUsername" matInput placeholder="Username">
                         <!-- <mat-icon matSuffix>account_circle</mat-icon> -->
                     </mat-form-field>
                     <mat-form-field appearance="standard">
                         <mat-label>Password</mat-label>
-                        <input type="password" name="password" [(ngModel)]="isPassword" matInput placeholder="Enter Password">
+                        <input type="password" name="password" [(ngModel)]="isPassword" matInput placeholder="Password">
                         <!-- <mat-icon matSuffix>vpn_key</mat-icon> -->
                     </mat-form-field>
 
                     <div class="btn-row">
                         <button type="submit" (click)="clickLogin()" class="btn-submit">Login</button>
-                        <!-- <button type="submit" (click)="clickClear()" class="btn-cancel">Clear</button> -->
+                        <button type="submit" (click)="clickClear()" class="btn-cancel">Clear</button>
                     </div>
 
                     <div (click)="register()" class="reg_click">

@@ -49,3 +49,13 @@ export class UpdateRoleModel extends RequestRoleModel
         super(init);
     }
 }
+
+export class PermissionByUserIdModelList
+{
+    public role: string;
+    public permissions: PermissionModel[];
+
+    public constructor(init?: Partial<PermissionByUserIdModelList>) {
+        Object.assign(this, init);
+    }
+}

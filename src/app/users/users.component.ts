@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { PermissionModel } from '../Models/RoleModel.model';
 import { ResponseModel, UserDialogInfoModel, UserModel, UserModelList } from '../Models/UserModel.model';
 import { UsersDialogComponent } from './users-dialog/users-dialog.component';
 
@@ -22,6 +23,7 @@ export class UsersComponent implements OnInit {
   public displayedColumns: string[] = ['number', 'userId', 'username', 'name', 'surname', 'date', 'log', 'edit', 'delete'];
   public dataSource = new MatTableDataSource<UserModel>();
   public formGroup: FormGroup;
+  public permissions: PermissionModel[];
 
   constructor(
     private router: Router,
@@ -32,6 +34,7 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.getUser();
+    this.permissions = JSON.parse(localStorage.getItem('permissions'));
   }
 
   public initForm(): void {
@@ -55,7 +58,6 @@ export class UsersComponent implements OnInit {
       this.objectUserTable = queryuser;
       this.dataSource = new MatTableDataSource<UserModel>(this.objectUserTable.usertable);
       this.dataSource.paginator = this.paginator;
-      // console.log('User feedback: ', this.objectUserTable);
 
     });
   }
@@ -97,5 +99,36 @@ export class UsersComponent implements OnInit {
       }
     });
 
+  }
+
+  checkPermission(eventPermission: string): boolean {
+    let result = false;
+    if (this.permissions.length > 0) {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.permissions.length; i++) {
+
+        if (this.permissions[i].permissionName === 'ViewButtonDeleteUser' && this.permissions[i].permissionCheck === false) {
+          const index = this.displayedColumns.indexOf('delete');
+          if (index >= 0) { this.displayedColumns.splice(index, 1); }
+        }
+
+        if (this.permissions[i].permissionName === 'ViewButtonEditUser' && this.permissions[i].permissionCheck === false) {
+          const index = this.displayedColumns.indexOf('edit');
+          if (index >= 0) { this.displayedColumns.splice(index, 1); }
+        }
+
+        if (this.permissions[i].permissionName === 'ViewButtonLogUser' && this.permissions[i].permissionCheck === false) {
+          const index = this.displayedColumns.indexOf('log');
+          if (index >= 0) { this.displayedColumns.splice(index, 1); }
+        }
+
+        if (this.permissions[i].permissionName === eventPermission) {
+          result = this.permissions[i].permissionCheck;
+          break;
+        }
+
+      }
+    }
+    return result;
   }
 }

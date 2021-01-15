@@ -7,7 +7,7 @@
                 <input matInput placeholder="Search..." formControlName="isSearch" (change)="getUser()">
             </mat-form-field>
         </form>
-        <button mat-raised-button class="btn-add" (click)="AddUser()"> Add
+        <button mat-raised-button *ngIf="checkPermission('ViewButtonAddUser')" class="btn-add" (click)="AddUser()"> Add
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -53,23 +53,23 @@
         </ng-container>
 
         <!-- Log Column -->
-        <ng-container matColumnDef="log">
+        <ng-container matColumnDef="log" *ngIf="checkPermission('ViewButtonLogUser')" >
             <th mat-header-cell *matHeaderCellDef class="th-header"> Log </th>
             <td mat-cell *matCellDef="let element" class="td-contain">
                 <mat-icon class="icon file" (click)="click()">insert_drive_file</mat-icon>
             </td>
         </ng-container>
 
-        <!-- Edit Column -->
-        <ng-container matColumnDef="edit">
+        <!-- Edit Column *ngIf="checkPermission('ViewButtonEditUser')"-->
+        <ng-container matColumnDef="edit"  *ngIf="checkPermission('ViewButtonEditUser')" >
             <th mat-header-cell *matHeaderCellDef class="th-header"> Edit </th>
             <td mat-cell *matCellDef="let element" class="td-contain">
                 <mat-icon class="icon create" (click)="clickEdit(element.id)">edit</mat-icon>
             </td>
         </ng-container>
 
-        <!-- Delete Column -->
-        <ng-container matColumnDef="delete">
+        <!-- Delete Column *ngIf="checkPermission('ViewButtonDeleteUser')"-->
+        <ng-container matColumnDef="delete"  *ngIf="checkPermission('ViewButtonDeleteUser')">
             <th mat-header-cell *matHeaderCellDef class="th-header"> Delete </th>
             <td mat-cell *matCellDef="let element" class="td-contain">
                 <mat-icon class="icon delete" (click)="clickDelete(element.id, element.username)">delete</mat-icon>

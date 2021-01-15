@@ -16,7 +16,7 @@
                 </mat-select>
             </mat-form-field>
         </form>
-        <button class="btn-camera"><a href="https://www.google.com/" target="_blank">
+        <button *ngIf="checkPermission('ViewButtonCamera')" class="btn-camera"><a href="https://www.google.com/" target="_blank">
                 <mat-icon class="icon-camera">camera_alt</mat-icon>
             </a></button>
         <!-- <button class="btn-camera">

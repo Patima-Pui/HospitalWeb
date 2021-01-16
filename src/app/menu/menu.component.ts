@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit {
   public isUsername = '';
   public selectMenu = 'Patient'; // defult selectMenu
   public permissions: PermissionModel[] = [];
+  public isRoleName = '';
 
   constructor(
     private router: Router,
@@ -28,29 +29,14 @@ export class MenuComponent implements OnInit {
     this.getPermissions();
   }
 
-  // checkPermission(permissionEvent: string): boolean {
-  //   if (this.permissions.length > 0) {
-  //     this.permissions.forEach((item: PermissionModel) => {
-  //       if (item.permissionName === permissionEvent) {
-  //         console.log(item.permissionName, ' CheckPermission ', item.permissionCheck);
-  //         return item.permissionCheck;
-  //       }
-  //       console.log('not in condition');
-  //     });
-  //   }
-  //   else {
-  //     console.log('CheckPermissionFalse');
-  //     return false;
-  //   }
-  // }
-
   getPermissions(): void {
     this.http.get(environment.apiUrl + '/Roles/PermissionByUserId?Id=' + Global._USERID).subscribe(
       (response: PermissionByUserIdModelList) => {
-        localStorage.setItem('roleName', response.role);
         localStorage.setItem('permissions', JSON.stringify(response.permissions));
         this.permissions = response.permissions;
         console.log(this.permissions);
+        this.isRoleName = response.role;
+        console.log(this.isRoleName);
       }
     );
   }

@@ -20,7 +20,7 @@ export class UsersComponent implements OnInit {
   public objectUserTable: UserModelList;
   public formGroupSearchUser: FormGroup;
 
-  public displayedColumns: string[] = ['number', 'userId', 'username', 'name', 'surname', 'date', 'log', 'edit', 'delete'];
+  public displayedColumns: string[] = ['number', 'userId', 'username', 'name', 'surname', 'roleName', 'date', 'log', 'edit', 'delete'];
   public dataSource = new MatTableDataSource<UserModel>();
   public formGroup: FormGroup;
   public permissions: PermissionModel[];

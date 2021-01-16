@@ -6,17 +6,17 @@
     </div>
     <!--End class textlogo-->
     <div class="menu-right">
-        <!-- #docregion mat-menu-trigger-for -->
+
         <button mat-fab class="btn-icon" mat-button [matMenuTriggerFor]="menu">
             <mat-icon>person</mat-icon>
         </button>
-        <!-- #enddocregion ma t-menu-trigger-for -->
+
         <mat-menu #menu="matMenu">
             <!-- <div>User &nbsp;{{isUsername}}</div> -->
             <div class="txt-username">{{isUsername}}</div>
+            <div class="txt-role">Role: {{isRoleName}}</div>
             <mat-divider></mat-divider>
             <button class="btn-menu" mat-menu-item (click)="clickEditProfile()">
-                <!-- (click)="clickEditProfile(isUsername)" -->
                 <mat-icon>edit</mat-icon>
                 Edit Profile
             </button>

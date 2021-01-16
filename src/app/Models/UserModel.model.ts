@@ -4,6 +4,7 @@ export class UserModel {
     public name: string;
     public surname: string;
     public createdate: Date;
+    public roleName: string;
 }
 
 export class UserModelList {

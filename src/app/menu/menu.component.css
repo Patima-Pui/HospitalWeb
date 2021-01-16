@@ -73,9 +73,14 @@ mat-drawer {
 .txt-username{
     text-align: center;
     font-size: 16px;
-    padding: 14px 5px 14px 5px;
+    padding: 14px 0px 0px 0px;
 }
-
+.txt-role{
+    text-align: center;
+    font-size: 12px;
+    color: gray;    
+    padding: 0px 0px 14px 0px;
+}
 .btn-menu{
     background-color: #e8e8e8;
 }

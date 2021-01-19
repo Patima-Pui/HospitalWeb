@@ -6,6 +6,8 @@ import { Global } from '../global/global';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel, UserProfileModel } from '../Models/UserModel.model';
 import CryptoJS from 'crypto-js';
 import { environment } from 'src/environments/environment';
+import { DialogErrorComponent } from '../dialog-error/dialog-error.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-profile',
@@ -27,11 +29,12 @@ export class UserProfileComponent implements OnInit {
   public action: string; // register, add, edit
   public userId: number;
   public duplicatePassword = true;
-
+  public messageError: string;
   constructor(
     private router: Router, // transmit
     private route: ActivatedRoute, // receive
-    private http: HttpClient
+    private http: HttpClient,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -90,12 +93,11 @@ export class UserProfileComponent implements OnInit {
       (response: ResponseModel) => {
 
         if (response.success) {
-          alert('REGISTER SUCCESS'); //message จากหลังบ้าน
+          alert('REGISTER SUCCESS');
           this.router.navigate(['/login']);
         } else {
-          alert('REGISTER FAIL !');
+          this.openDialog(response.message);
         }
-
 
       },
       (error) => {
@@ -103,6 +105,14 @@ export class UserProfileComponent implements OnInit {
         alert('REGISTER FAIL !!!');
       }
     );
+  }
+
+  openDialog(message: string): void{
+    const dialogRef = this.dialog.open(DialogErrorComponent, {
+      width: '400px',
+      // height: '250px',
+      data: message
+    });
   }
 
   clickSaveEdit(): void {

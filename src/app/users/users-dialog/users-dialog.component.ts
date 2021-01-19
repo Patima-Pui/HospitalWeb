@@ -22,30 +22,27 @@ export class UsersDialogComponent {
     this.dialogRef.close(false);
   }
 
-  // onDelete(): void {
-  //   const options = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json'
-  //     }),
-  //     body: {
-  //       id: this.data.userId,
-  //       username: this.data.username,
-  //       deleteName: Global._USERNAME
-  //     }
-  //   };
-  //   const url = environment.apiUrl + '/User/DeleteProfile';
-  //   this.http.delete(url, options).subscribe(
-  //     (response: ResponseModel) => {
-  //       console.log(response);
-  //       if (response.success) {
-  //         this.dialogRef.close(true);
-  //       }
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     });
-
-  // }
-
-
+  onDelete(): void {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: {
+        id: this.data.userId,
+        username: this.data.username,
+        deleteName: Global._USERNAME
+      }
+    };
+    const url = environment.apiUrl + '/User/DeleteProfile';
+    this.http.delete(url, options).subscribe(
+      (response: ResponseModel) => {
+        console.log(response);
+        if (response.success) {
+          this.dialogRef.close(true);
+        }
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

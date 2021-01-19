@@ -13,7 +13,7 @@ export class UserModelList {
 
 export class ResponseModel {
     public success: boolean;
-
+    public message: string;
     public constructor(init?: Partial<ResponseModel>) {
         Object.assign(this, init);
     }

@@ -1,0 +1,33 @@
+::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    min-height: 150px;
+}
+
+.header {
+    height: 40px;
+    background-color: red;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+    color:white;
+    font-weight: bold;
+    font-size: large;
+}
+
+.content {
+    padding: 20px 10px 10px 10px;
+    font-size: 18px;
+}
+
+.btn {
+    float: right;
+    padding: 10px;
+}
+.btn-error {
+    color:white;
+    background-color: red;
+
+}
+

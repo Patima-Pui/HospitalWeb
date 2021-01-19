@@ -90,11 +90,12 @@ export class UserProfileComponent implements OnInit {
       (response: ResponseModel) => {
 
         if (response.success) {
-          alert('REGISTER SUCCESS');
+          alert('REGISTER SUCCESS'); //message จากหลังบ้าน
           this.router.navigate(['/login']);
         } else {
           alert('REGISTER FAIL !');
         }
+
 
       },
       (error) => {

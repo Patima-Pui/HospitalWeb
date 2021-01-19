@@ -86,17 +86,19 @@ export class UsersComponent implements OnInit {
     this.router.navigate(['/user-profile'], navigationExtras);
   }
 
+  /////////ตรงวนี้นะ/////////
   public clickDelete(id: number, user: string): void {
     const dialogRef = this.dialog.open(UsersDialogComponent, {
       width: '500px',
-      data: new UserDialogInfoModel({ username: user, userId: id })
+      // data: new UserDialogInfoModel({ username: user, userId: id })
+      // data: this.messageError
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      if (result) {
-        this.getUser();
-      }
+      // console.log(result);
+      // if (result) {
+      //   this.getUser();
+      // }
     });
 
   }

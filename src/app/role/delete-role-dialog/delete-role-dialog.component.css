@@ -1,21 +1,48 @@
+::ng-deep .mat-dialog-container {
+    padding: 0px !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+    min-height: 150px;
+}
+::ng-deep .mat-dialog-actions {
+    padding: 0px !important;
+}
+.dialog {
+    display: flex;
+    min-height: 100px;
+}
+.left {
+    flex: 1;
+    /* margin: auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 10px 20px 10px;
+}
+.right {
+    flex: 3;
+    padding: 30px 10px 20px 10px;
+}
+.header {
+    font-weight: bold;
+    font-size: large;
+    padding-bottom: 10px;
+}
+.content {
+    font-size: 16px;
+}
 .btn-cancel {
     width: 140px;
     background:white;
     color: gray;
 }
-
 .btn-del {
     width: 140px;
     background:red;
     color: white;
 }
-
 ::ng-deep .mat-dialog-actions{
     justify-content: center;
-}
-
-.text {
-    padding-left: 20px;
 }
 
 .icon:hover {
@@ -25,3 +52,15 @@
 .delete {
     color:FireBrick;
 }
+
+/* .text {
+    padding-left: 20px;
+}
+
+.icon:hover {
+    display: flex;
+}
+
+.delete {
+    color:FireBrick;
+} */

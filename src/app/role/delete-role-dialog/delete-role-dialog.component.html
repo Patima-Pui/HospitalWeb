@@ -2,13 +2,26 @@
   <mat-icon class="icon delete" ></mat-icon>
 </div> -->
 
-<div class="text">
+<!-- <div class="text">
   <h1 mat-dialog-title><mat-icon class="icon delete" >delete</mat-icon>Confirm Delete</h1>
   <div mat-dialog-content>
     <div> Are you sure to delete "{{data.role}}"? </div>
   </div>
 </div>
 
+<div mat-dialog-actions>
+  <button mat-stroked-button class="btn-del" (click)="onDelete()">Delete</button>
+  <button mat-stroked-button class="btn-cancel" (click)="onClickCancel()">Cancel</button>
+</div> -->
+<div class="dialog">
+  <div class="left">
+    <mat-icon class="icon delete">delete</mat-icon>
+  </div>
+  <div class="right">
+    <div class="header">Confirm Delete</div>
+    <div class="content"> Are you sure to delete "{{data.role}}"? </div>
+  </div>
+</div>
 <div mat-dialog-actions>
   <button mat-stroked-button class="btn-del" (click)="onDelete()">Delete</button>
   <button mat-stroked-button class="btn-cancel" (click)="onClickCancel()">Cancel</button>

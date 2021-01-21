@@ -64,36 +64,60 @@
 
                 <mat-form-field appearance="standard">
                     <mat-label>Username</mat-label>
-                    <input type="text" name="username" formControlName="isUsername" autocomplete="off"
+                    <input type="text" name="username" formControlName="isUsername" [errorStateMatcher]="matcher" autocomplete="off"
                         [attr.disabled]="action=='edit' ? '' : null" matInput placeholder="Username">
+                    <mat-error *ngIf="formGroup.controls.isUsername.hasError('required')">
+                        Username is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard" *ngIf="action!=='edit'">
                     <mat-label>Password</mat-label>
-                    <input type="password" name="password" formControlName="isPassword"
+                    <input type="password" name="password" formControlName="isPassword" [errorStateMatcher]="matcher"
                         (change)="checkDuplicatePassword()" matInput placeholder="Password">
+                    <mat-error *ngIf="formGroup.controls.isPassword.hasError('required')">
+                        Password is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard" *ngIf="action!=='edit'">
                     <mat-label>Re-Password</mat-label>
                     <input type="password" name="re-password" (change)="checkDuplicatePassword()"
-                        formControlName="isRePassword" matInput placeholder="Re-Password">
+                        formControlName="isRePassword" [errorStateMatcher]="matcher" matInput placeholder="Re-Password">
                     <mat-hint *ngIf="!duplicatePassword" class="error-password">Please make sure your passwords match
                     </mat-hint>
+                    <mat-error *ngIf="formGroup.controls.isRePassword.hasError('required')">
+                        Re-Password is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>Name</mat-label>
-                    <input type="text" name="name" formControlName="isName" matInput placeholder="Name">
+                    <input type="text" name="name" formControlName="isName" [errorStateMatcher]="matcher" matInput placeholder="Name">
+                    <mat-error *ngIf="formGroup.controls.isName.hasError('required')">
+                        Name is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>Surname</mat-label>
-                    <input type="text" name="surname" formControlName="isSurname" matInput placeholder="Surname">
+                    <input type="text" name="surname" formControlName="isSurname" [errorStateMatcher]="matcher" matInput placeholder="Surname">
+                    <mat-error *ngIf="formGroup.controls.isSurname.hasError('required')">
+                        Surname is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>Telephone</mat-label>
-                    <input type="tel" name="telephone" formControlName="isTelephone" matInput placeholder="Telephone">
+                    <input type="tel" name="telephone" formControlName="isTelephone" [errorStateMatcher]="matcher" matInput placeholder="Telephone">
+                    <mat-error *ngIf="formGroup.controls.isTelephone.hasError('required')">
+                        Telephone is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>E-mail</mat-label>
-                    <input type="email" name="e-mail" formControlName="isEmail" matInput placeholder="E-mail">
+                    <input type="email" name="e-mail" formControlName="isEmail" [errorStateMatcher]="matcher" matInput placeholder="E-mail">
+                    <mat-error *ngIf="formGroup.controls.isEmail.hasError('email') && !formGroup.controls.isEmail.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="formGroup.controls.isEmail.hasError('required')">
+                        Email is required
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="standard">
                     <mat-label>Department</mat-label>

@@ -31,7 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ManagelogComponent } from './managelog/managelog.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { ErrorStateMatcher, MatNativeDateModule, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { UsersDialogComponent } from './users/users-dialog/users-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PatientInfoDialogComponent } from './patient/patient-info-dialog/patient-info-dialog.component';
@@ -87,7 +87,7 @@ import { DialogErrorComponent } from './dialog-error/dialog-error.component';
     MatFormFieldModule,
     MatSlideToggleModule
   ],
-  providers: [AuthService, MatDatepickerModule, AuthGuard],
+  providers: [AuthService, MatDatepickerModule, AuthGuard, {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

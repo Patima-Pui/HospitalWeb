@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Global } from '../global/global';
 import { DropdownDepartmentModel, DropdownDepartmentModelList, RequestRegister, ResponseModel, UserProfileModel } from '../Models/UserModel.model';
@@ -8,7 +8,15 @@ import CryptoJS from 'crypto-js';
 import { environment } from 'src/environments/environment';
 import { DialogErrorComponent } from '../dialog-error/dialog-error.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ErrorStateMatcher } from '@angular/material/core';
 
+/** Error when invalid control is dirty, touched, or submitted. */
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -30,6 +38,7 @@ export class UserProfileComponent implements OnInit {
   public userId: number;
   public duplicatePassword = true;
   public messageError: string;
+  public matcher = new MyErrorStateMatcher();
   constructor(
     private router: Router, // transmit
     private route: ActivatedRoute, // receive
@@ -58,14 +67,14 @@ export class UserProfileComponent implements OnInit {
 
   public initForm(): void {
     this.formGroup = new FormGroup({
-      isUsername: new FormControl('', [Validators.required]),
-      isPassword: new FormControl(''),
-      isRePassword: new FormControl(''),
-      isName: new FormControl(''),
-      isSurname: new FormControl(''),
-      isTelephone: new FormControl(''),
-      isEmail: new FormControl(''),
-      isDepartmentId: new FormControl('')
+      isUsername: new FormControl('', [ Validators.required] ),
+      isPassword: new FormControl('', [ Validators.required] ),
+      isRePassword: new FormControl('', [ Validators.required] ),
+      isName: new FormControl('', [ Validators.required] ),
+      isSurname: new FormControl('', [ Validators.required] ),
+      isTelephone: new FormControl('', [ Validators.required] ),
+      isEmail: new FormControl('', [ Validators.required, Validators.email] ),
+      isDepartmentId: new FormControl(0, [ Validators.required] ),
     });
   }
 

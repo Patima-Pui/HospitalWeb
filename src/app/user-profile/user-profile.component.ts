@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { DialogErrorComponent } from '../dialog-error/dialog-error.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { RoleModel, RoleModelList } from '../Models/RoleModel.model';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -34,6 +35,8 @@ export class UserProfileComponent implements OnInit {
   public isDepartmentId: number;
   public formGroup: FormGroup;
   public departmentList: DropdownDepartmentModel[];
+  public isRoleId: number;
+  public roleList: RoleModel[];
   public action: string; // register, add, edit
   public userId: number;
   public duplicatePassword = true;
@@ -50,6 +53,7 @@ export class UserProfileComponent implements OnInit {
     this.action = 'register';
     this.initForm();
     this.getDepartmentList();
+    this.getRoleList();
     this.getExtras();
   }
 
@@ -75,6 +79,7 @@ export class UserProfileComponent implements OnInit {
       isTelephone: new FormControl('', [ Validators.required] ),
       isEmail: new FormControl('', [ Validators.required, Validators.email] ),
       isDepartmentId: new FormControl(0, [ Validators.required] ),
+      isRoleId: new FormControl('', [ Validators.required] ),
     });
   }
 
@@ -94,7 +99,8 @@ export class UserProfileComponent implements OnInit {
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
       DepartmentId: Number(this.formGroup.value.isDepartmentId),
-      UpSertName: this.formGroup.value.isUsername
+      UpSertName: this.formGroup.value.isUsername,
+      RoleId: 3 // when user register by yourself,will set defult to General role
     });
 
     this.http.post(environment.apiUrl + '/User/Register', formbody).subscribe(
@@ -133,7 +139,8 @@ export class UserProfileComponent implements OnInit {
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
       DepartmentId: Number(this.formGroup.value.isDepartmentId),
-      UpSertName: Global._USERNAME
+      UpSertName: Global._USERNAME,
+      RoleId: Number(this.formGroup.value.isRoleId)
     });
 
     this.http.put(environment.apiUrl + '/User/UpdateUserProfile', formbody).subscribe(
@@ -163,7 +170,8 @@ export class UserProfileComponent implements OnInit {
       Telephone: this.formGroup.value.isTelephone,
       Email: this.formGroup.value.isEmail,
       DepartmentId: Number(this.formGroup.value.isDepartmentId),
-      UpSertName: Global._USERNAME
+      UpSertName: Global._USERNAME,
+      RoleId: Number(this.formGroup.value.isRoleId)
     });
 
     this.http.post(environment.apiUrl + '/User/AddUser', formbody).subscribe(
@@ -200,6 +208,14 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  getRoleList(): void {
+    this.http.get(environment.apiUrl + '/Roles/RolesAll').subscribe((roledata: RoleModelList) => {
+      if (roledata) {
+        this.roleList = roledata.roleList;
+      }
+    });
+  }
+
   checkAction(): boolean {
     return this.action === 'register' ? true : false;
   }
@@ -220,6 +236,8 @@ export class UserProfileComponent implements OnInit {
     this.formGroup.controls.isTelephone.setValue(object.telephone);
     this.formGroup.controls.isEmail.setValue(object.email);
     this.formGroup.controls.isDepartmentId.setValue(object.departmentId);
+    this.formGroup.controls.isRoleId.setValue(object.roleId);
+    console.log(object);
   }
 
   checkDuplicatePassword(): void {

@@ -8,8 +8,12 @@ export class RoleModel {
 }
 
 export class RoleModelList {
-    public roletable: RoleModel[];
+    public roleList: RoleModel[];
+    public constructor(init?: Partial<RoleModel>) {
+        Object.assign(this, init);
+    }
 }
+
 export class PermissionModel {
     public permissionId: number;
     public permissionName: string;

@@ -47,7 +47,7 @@ export class RequestRegister {
     public Email: string;
     public DepartmentId: number;
     public UpSertName: string;
-
+    public RoleId: number;
     public constructor(init?: Partial<RequestRegister>) {
         Object.assign(this, init);
     }
@@ -60,7 +60,7 @@ export class UserProfileModel {
     public telephone: string;
     public email: string;
     public departmentId: number;
-
+    public roleId: number;
     public constructor(init?: Partial<UserProfileModel>) {
         Object.assign(this, init);
     }

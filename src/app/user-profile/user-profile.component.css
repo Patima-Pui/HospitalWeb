@@ -145,6 +145,6 @@ button {
     font-size: 10px;
 }
 
-.mat-option-text{
+::ng-deep .mat-option-text{
     padding-left: 15px;
 }

@@ -43,7 +43,7 @@ export class RoleComponent implements OnInit {
   getRole(): void {
     this.http.get(environment.apiUrl + '/Roles/RolesAll').subscribe((roledata: RoleModelList) => {
       console.log('Role : ', roledata);
-      this.roleList = roledata.roletable;
+      this.roleList = roledata.roleList;
       this.dataSource = new MatTableDataSource<RoleModel>(this.roleList);
       this.dataSource.paginator = this.paginator;
     });

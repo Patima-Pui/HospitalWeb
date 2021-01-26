@@ -125,6 +125,12 @@
                         <mat-option *ngFor="let item of departmentList" [value]="item.id">{{item.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
+                <mat-form-field appearance="standard" *ngIf="action!=='register'">
+                    <mat-label>Role</mat-label>
+                    <mat-select name="roleId" id="roleId" formControlName="isRoleId">
+                        <mat-option *ngFor="let item of roleList" [value]="item.id" >{{item.role}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <div [ngClass]="{'btn-row-register':checkAction(), 'btn-row':!checkAction()}">
                     <button type="submit" *ngIf="action=='register'" (click)="clickRegister()"

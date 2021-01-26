@@ -71,15 +71,15 @@ export class UserProfileComponent implements OnInit {
 
   public initForm(): void {
     this.formGroup = new FormGroup({
-      isUsername: new FormControl('', [ Validators.required] ),
-      isPassword: new FormControl('', [ Validators.required] ),
-      isRePassword: new FormControl('', [ Validators.required] ),
-      isName: new FormControl('', [ Validators.required] ),
-      isSurname: new FormControl('', [ Validators.required] ),
-      isTelephone: new FormControl('', [ Validators.required] ),
-      isEmail: new FormControl('', [ Validators.required, Validators.email] ),
-      isDepartmentId: new FormControl(0, [ Validators.required] ),
-      isRoleId: new FormControl('', [ Validators.required] ),
+      isUsername: new FormControl('', [Validators.required]),
+      isPassword: new FormControl('', [Validators.required]),
+      isRePassword: new FormControl('', [Validators.required]),
+      isName: new FormControl('', [Validators.required]),
+      isSurname: new FormControl('', [Validators.required]),
+      isTelephone: new FormControl('', [Validators.required]),
+      isEmail: new FormControl('', [Validators.required, Validators.email]),
+      isDepartmentId: new FormControl(0, [Validators.required]),
+      isRoleId: new FormControl(3, [Validators.required]),
     });
   }
 
@@ -122,7 +122,7 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  openDialog(message: string): void{
+  openDialog(message: string): void {
     const dialogRef = this.dialog.open(DialogErrorComponent, {
       width: '400px',
       // height: '250px',
@@ -245,6 +245,44 @@ export class UserProfileComponent implements OnInit {
       this.duplicatePassword = false;
     } else {
       this.duplicatePassword = true;
+    }
+  }
+
+  setValidation(formControlsNames: string[]): void {
+    formControlsNames.forEach(name => {
+      this.formGroup.controls[name].markAsTouched();
+    });
+  }
+
+  isInvalidForm(): boolean {
+    this.setValidation(['isUsername', 'isPassword', 'isRePassword', 'isName', 'isSurname', 'isTelephone', 'isEmail']);
+    if (this.action !== 'edit') {
+      return this.formGroup.controls.isUsername.invalid
+        || this.formGroup.controls.isPassword.invalid
+        || this.formGroup.controls.isRePassword.invalid
+        || this.formGroup.controls.isName.invalid
+        || this.formGroup.controls.isSurname.invalid
+        || this.formGroup.controls.isTelephone.invalid
+        || this.formGroup.controls.isEmail.invalid;
+    } else {
+      return this.formGroup.controls.isUsername.invalid
+        || this.formGroup.controls.isName.invalid
+        || this.formGroup.controls.isSurname.invalid
+        || this.formGroup.controls.isTelephone.invalid
+        || this.formGroup.controls.isEmail.invalid;
+    }
+  }
+
+  save(): void {
+    if (this.isInvalidForm()) { return; } // If this form is invalid,will skip(can't save until correct form)
+    if (this.action === 'register') {
+      this.clickRegister();
+    }
+    else if (this.action === 'add') {
+      this.clickAdd();
+    }
+    else if (this.action === 'edit') {
+      this.clickSaveEdit();
     }
   }
 }

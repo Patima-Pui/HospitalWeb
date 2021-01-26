@@ -133,13 +133,13 @@
                 </mat-form-field>
 
                 <div [ngClass]="{'btn-row-register':checkAction(), 'btn-row':!checkAction()}">
-                    <button type="submit" *ngIf="action=='register'" (click)="clickRegister()"
+                    <button type="submit" *ngIf="action=='register'" (click)="save()"
                         class="btn-submit">Register</button>
                     <button type="submit" *ngIf="action=='register'" (click)="clickCancelRegister()"
                         class="btn-cancel">Cancel</button>
 
-                    <button type="submit" *ngIf="action=='add'" (click)="clickAdd()" class="btn-submit">Add</button>
-                    <button type="submit" *ngIf="action=='edit'" (click)="clickSaveEdit()"
+                    <button type="submit" *ngIf="action=='add'" (click)="save()" class="btn-submit">Add</button>
+                    <button type="submit" *ngIf="action=='edit'" (click)="save()"
                         class="btn-submit">Save</button>
                     <button type="submit" *ngIf="action!='register'" (click)="clickCancel()"
                         class="btn-cancel">Cancel</button>

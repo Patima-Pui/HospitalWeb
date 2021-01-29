@@ -5,11 +5,13 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { DropdownTypeModel, DropdownTypeModelList, PatientModel, PatientModelList } from '../Models/PatientModel.model';
 import { PermissionModel } from '../Models/RoleModel.model';
+import { PatientService } from '../service/patient.service';
 import { PatientInfoDialogComponent } from './patient-info-dialog/patient-info-dialog.component';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-patient',
   templateUrl: './patient.component.html',
@@ -35,6 +37,7 @@ export class PatientComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
+    private patientService: PatientService,
     public dialog: MatDialog
   ) { }
 
@@ -106,5 +109,14 @@ export class PatientComponent implements OnInit {
       }
     }
     return result;
+  }
+
+  exportPatient(): void {
+    const searchTxt = this.formGroup.value.isSearch;
+    const typeId = this.formGroup.value.isType;
+    this.patientService.getExportPatient(searchTxt, typeId).subscribe(res => {
+      const blob = new Blob([res], { type: 'application/octet-stream' });
+      saveAs(blob, 'Patient.xlsx');
+    });
   }
 }

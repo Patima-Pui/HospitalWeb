@@ -16,12 +16,9 @@
                 </mat-select>
             </mat-form-field>
         </form>
-        <button *ngIf="checkPermission('ViewButtonCamera')" class="btn-camera"><a href="https://www.google.com/" target="_blank">
-                <mat-icon class="icon-camera">camera_alt</mat-icon>
-            </a></button>
-        <!-- <button class="btn-camera">
-        <mat-icon class="icon-camera">camera_alt</mat-icon>
-    </button> -->
+        <button *ngIf="checkPermission('ViewButtonCamera')" class="btn-camera" (click)="exportPatient()">
+            <mat-icon class="icon-camera">get_app</mat-icon>
+        </button>
     </div>
 
     <h2> Patients List </h2>
